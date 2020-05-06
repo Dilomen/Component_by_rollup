@@ -1,13 +1,16 @@
 {
-  "name": "rollup_demo",
-  "version": "1.0.0",
+  "name": "serein_ui",
+  "version": "1.0.1",
   "description": "",
-  "main": "src/main.js",
+  "main": "./es/index/index.js",
   "scripts": {
     "dev": "npm run start",
-    "start": "NODE_ENV=development rollup -c --watch",
-    "build": "NODE_ENV=production rollup -c"
+    "start": "NODE_ENV=development rollup --watch -c ./config/rollup.dev.js",
+    "build": "NODE_ENV=production rollup -c ./config/rollup.prod.js"
   },
+  "files": [
+    "es"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -31,23 +34,13 @@
     "@babel/plugin-transform-runtime": "^7.7.5",
     "@babel/preset-env": "^7.7.5",
     "@babel/preset-react": "^7.7.4",
-    "@rollup/plugin-json": "^4.0.0",
-    "@types/react": "^16.9.15",
-    "@types/react-dom": "^16.9.4",
-    "@types/react-router-dom": "^5.1.3",
     "autoprefixer": "^9.7.3",
-    "babel": "^6.5.2",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
-    "babel-preset-env": "^1.7.0",
-    "babel-runtime": "^6.26.0",
     "cssnano": "^4.1.10",
     "node-sass": "^4.13.0",
-    "react-router-dom": "^5.1.2",
     "rollup": "^1.27.8",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-clear": "^2.0.7",
     "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-img": "^1.1.0",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-livereload": "^1.0.4",
     "rollup-plugin-node-resolve": "^5.2.0",
@@ -55,10 +48,12 @@
     "rollup-plugin-replace": "^2.2.0",
     "rollup-plugin-serve": "^1.0.1",
     "rollup-plugin-typescript2": "^0.24.3",
-    "ts-import-plugin": "^1.6.1",
     "typescript": "^3.6.4"
   },
   "dependencies": {
+    "@types/react": "^16.9.15",
+    "@types/react-dom": "^16.9.4",
+    "@types/react-router-dom": "^5.1.3",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   }
