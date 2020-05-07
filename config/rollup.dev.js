@@ -6,7 +6,7 @@ const livereload = require("rollup-plugin-livereload");
 const postcss = require("rollup-plugin-postcss");
 const autoprefixer = require("autoprefixer");
 const cssnano = require("cssnano");
-const { commonPlugin } = require("./rollup.config");
+const { commonPlugin } = require("./rollup.common");
 
 module.exports = {
   input: "./src/view/index.tsx",

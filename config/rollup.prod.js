@@ -3,23 +3,25 @@ const postcss = require("rollup-plugin-postcss");
 const autoprefixer = require("autoprefixer");
 const cssnano = require("cssnano");
 const clear = require("rollup-plugin-clear");
-const { commonPlugin, CSSGroup, cModuleMap } = require("./rollup.config");
+const { commonPlugin, CSSGroup, cModuleMap } = require("./rollup.common");
 module.exports = [
-    {input: "./src/index.ts",output: {
-        format: "esm",
-        file: "es/index.js"
-      },
-      external: ["react", "react-dom"],
-      experimentalCodeSplitting: true,
-      plugins: [
-        postcss({
-          extract: `./es/index.css`,
-          extensions: [".css", ".scss"],
-          plugins: [autoprefixer, cssnano],
-        }),
-        ...commonPlugin,
-      ],
+  {
+    input: "./src/index.ts",
+    output: {
+      format: "esm",
+      file: "es/index.js",
     },
+    external: ["react", "react-dom"],
+    experimentalCodeSplitting: true,
+    plugins: [
+      postcss({
+        extract: `./es/index.css`,
+        extensions: [".css", ".scss"],
+        plugins: [autoprefixer, cssnano],
+      }),
+      ...commonPlugin,
+    ],
+  },
 
   {
     input: { ...cModuleMap },
