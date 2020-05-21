@@ -1,0 +1,30 @@
+@import "../../common/style/variable.scss";
+$serein-code-preview: #{$serein-prefix}-code-preview;
+
+.#{$serein-code-preview} {
+  padding: 24px 0 0 24px;
+  border: 1px solid $border-color;
+  position: relative;
+  box-sizing: border-box;
+  margin: 40px 0 40px 0;
+  min-width: 400px;
+  &-title {
+    position: absolute;
+    top: -12px;
+    left: 14px;
+    background: #fff;
+    padding: 0 10px;
+    font-size: 20px;
+  }
+  &-code {
+    border-top: 1px solid $border-color;
+    overflow-y: scroll;
+  }
+  &-expand {
+    margin-top: 15px;
+    height: 30px;
+    border-top: 1px solid $border-color;
+    text-align: center;
+    line-height: 30px;
+  }
+}

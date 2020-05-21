@@ -1,3 +1,81 @@
-.button {
-    background-color: blue;
+@import "../../common/style/variable.scss";
+$serein-btn: #{$serein-prefix}-btn;
+
+$color: (
+  danger: $theme-danger-color,
+  primary: $theme-primary-color,
+  default: $theme-default-color,
+);
+
+.#{$serein-btn} {
+  outline: 0;
+  border-radius: 2px;
+  box-sizing: border-box;
+}
+
+@each $size in small, middle, large {
+  .#{$serein-btn}-#{$size} {
+    @if $size == small {
+      min-width: 40px;
+      min-height: 24px;
+      padding: 3px 8px;
+      font-size: 12px;
+    } @else if $size == middle {
+      min-width: 45px;
+      min-height: 28px;
+      font-size: 14px;
+      padding: 5px 10px;
+    } @else {
+      min-width: 50px;
+      min-height: 32px;
+      font-size: 16px;
+      padding: 7px 12px;
+    }
+  }
+}
+
+@each $type in danger, primary, link, default {
+  .#{$serein-btn}-#{$type} {
+    cursor: pointer;
+    background-color: map-get($color, #{$type});
+    color: #fff;
+    border: 1px solid map-get($color, #{$type});
+    @if $type == default {
+      border: 1px solid #d9d9d9;
+      color: $text-color;
+      &:hover {
+        color: $theme-primary-color;
+        border: 1px solid $theme-primary-color;
+      }
+    } @else if $type == link {
+      border: 0;
+      background: none;
+      color: $theme-primary-color;
+    }
+    &:hover {
+      opacity: 0.7;
+    }
+    &-ghost {
+      background-color: transparent;
+      border: 1px solid map-get($color, #{$type});
+      color: map-get($color, #{$type});
+      @if $type == default {
+        border: 1px dashed #d9d9d9;
+        color: $text-color;
+        &:hover {
+          color: $theme-primary-color;
+          border: 1px dashed $theme-primary-color;
+        }
+      }
+    }
+  }
+}
+
+.#{$serein-btn}-block {
+  display: block; 
+  width: 100%;
+}
+
+.#{$serein-btn}-icon {
+  margin-right: 5px;
 }

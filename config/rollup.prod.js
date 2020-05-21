@@ -6,7 +6,7 @@ const clear = require("rollup-plugin-clear");
 const { commonPlugin, CSSGroup, cModuleMap } = require("./rollup.common");
 module.exports = [
   {
-    input: "./src/index.ts",
+    input: "./src/index.js",
     output: {
       format: "esm",
       file: "es/index.js",

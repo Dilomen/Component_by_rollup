@@ -1,3 +1,73 @@
-p {
-    color: blue;
+#root {
+  position: fixed;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+}
+
+.serein-nav {
+  height: 100vh;
+  width: 300px;
+  min-width: 200px;
+  border-right: 1px solid #f0f0f0;
+  padding-top: 24px;
+  overflow: scroll;
+  li {
+    list-style: none;
+    height: 40px;
+    text-align: left;
+    padding-left: 50px;
+    a {
+      text-decoration: none;
+      color: rgba(0, 0, 0, 0.85);
+    }
+  }
+}
+
+.serein-container {
+  flex: 1;
+  padding: 24px 100px 100px 100px;
+  height: 100vh;
+  overflow: scroll;
+}
+.serein-scroll {
+  padding-bottom: 140px;
+}
+.instruction {
+  table {
+    width: 100%;
+    text-align: left;
+    thead {
+      background: rgb(206, 206, 206);
+      tr {
+        height: 40px;
+        th {
+          padding-left: 4px;
+        }
+      }
+    }
+    tbody {
+      tr {
+        border-bottom: 1px solid #999;
+        height: 30px;
+        td {
+          padding-left: 4px;
+        }
+      }
+    }
+  }
+}
+
+
+code {
+  background: #fff!important;
+  padding: 10px!important;
+  color: rgba(0, 0, 0, 0.65)!important;
+  font-size: 16px!important;
+  line-height: 1.8!important;
+  font-family: 'PingFang SC','Microsoft Yahei',Helvetica, Arial, Helvetica, sans-serif!important;
+}
+
+.hljs-attribute, .hljs-doctag, .hljs-keyword, .hljs-meta-keyword, .hljs-name, .hljs-selector-tag {
+  color: #568FF0;
 }

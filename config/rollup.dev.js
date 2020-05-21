@@ -9,7 +9,7 @@ const cssnano = require("cssnano");
 const { commonPlugin } = require("./rollup.common");
 
 module.exports = {
-  input: "./src/view/index.tsx",
+  input: "./src/view/index.jsx",
   output: {
     file: "build/index.js",
     format: "iife",
@@ -30,8 +30,8 @@ module.exports = {
     }),
     livereload(),
   ],
+  // 使用 --watch 标志或使用 rollup.watch 时生效
   watch: {
-    include: "src/**",
-    clearScreen: true,
-  },
+    include: 'src/**'
+  }
 };
