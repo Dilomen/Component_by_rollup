@@ -9,7 +9,8 @@
 | target    | 相当于 a 链接的 target 属性，href 存在时生效          | string  | -       |
 | htmlType  | 设置 button 原生的 type 值                            | string  | button  |
 | icon      | 设置按钮的图标类型                                    | string  | -       |
-| prefixCls | 设置按钮的 class 前缀                                 | string  | -       |
 | className | 添加 class 样式                                       | object  | {}      |
 | onClick   | 点击 button                                           | func    | -       |
-| children  | button 内容                                           | -       | 'btn'  |
+| children  | button 内容                                           | -       | 'btn'   |
+| block     | 是否块状样式                                          | boolean | false   |
+| style     | 行内样式                                              | object  | -       |

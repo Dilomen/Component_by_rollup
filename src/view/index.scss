@@ -30,11 +30,31 @@
   height: 100vh;
   overflow: scroll;
 }
-.serein-scroll {
-  padding-bottom: 140px;
+
+.serein-footer {
+  margin: 100px -100px 0 -100px;
+  // margin-left: -100px;
+  background-color: #333;
+  width: calc(100% + 200px);
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 100px;
+  li {
+    list-style: none;
+    line-height: 40px;
+    font-size: 20px;
+    color: rgb(218, 218, 218);
+    a {
+      color: rgb(218, 218, 218);
+    }
+  }
 }
 .instruction {
   table {
+    border-collapse: collapse;
     width: 100%;
     text-align: left;
     thead {
@@ -42,32 +62,52 @@
       tr {
         height: 40px;
         th {
-          padding-left: 4px;
+          padding-left: 8px;
         }
       }
     }
     tbody {
       tr {
-        border-bottom: 1px solid #999;
-        height: 30px;
+        height: 35px;
         td {
-          padding-left: 4px;
+          padding-left: 8px;
+          border-bottom: 1px solid #f0f0f0;
+          color: rgba(0, 0, 0, 0.774);
         }
       }
     }
   }
 }
 
-
 code {
-  background: #fff!important;
-  padding: 10px!important;
-  color: rgba(0, 0, 0, 0.65)!important;
-  font-size: 16px!important;
-  line-height: 1.8!important;
-  font-family: 'PingFang SC','Microsoft Yahei',Helvetica, Arial, Helvetica, sans-serif!important;
+  display: block;
+    overflow-x: auto;
+  background: rgba(206, 206, 206, 0.5) !important;
+  border-radius: 8px;
+  padding: 10px !important;
+  color: rgba(0, 0, 0, 0.65) !important;
+  font-size: 16px !important;
+  line-height: 1.5 !important;
+  font-family: "PingFang SC", "Microsoft Yahei", Helvetica, Arial, Helvetica,
+    sans-serif !important;
 }
 
-.hljs-attribute, .hljs-doctag, .hljs-keyword, .hljs-meta-keyword, .hljs-name, .hljs-selector-tag {
-  color: #568FF0;
+.hljs-attribute,
+.hljs-doctag,
+.hljs-keyword,
+.hljs-meta-keyword,
+.hljs-name,
+.hljs-selector-tag {
+  color: #568ff0;
+}
+
+.hljs-deletion,
+.hljs-number,
+.hljs-quote,
+.hljs-selector-class,
+.hljs-selector-id,
+.hljs-string,
+.hljs-template-tag,
+.hljs-type {
+  color: #ad3739 !important;
 }

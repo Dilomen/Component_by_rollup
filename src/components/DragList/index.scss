@@ -1,0 +1,16 @@
+@import "../../common/style/variable.scss";
+.serein-dragList-wrap {
+  width: 100%;
+}
+.serein-dragList-item {
+  overflow: hidden;
+}
+
+.serein-draping-item {
+  opacity: 0.3;
+}
+.serein-draping-copy-item {
+  opacity: 0.3;
+  position: fixed;
+  pointer-events: none; // 鼠标穿透
+}

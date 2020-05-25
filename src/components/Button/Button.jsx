@@ -3,7 +3,7 @@ import "./index.scss";
 import Classnames from "classnames";
 import { ConfigConsumer } from "../configProvider/index.jsx";
 import Icon from "../Icon/index";
-import { string, bool, oneOfType, func, node, oneOf } from "prop-types";
+import { string, bool, func, node, oneOf } from "prop-types";
 class Button extends React.Component {
   constructor(props) {
     super(props);
@@ -12,7 +12,6 @@ class Button extends React.Component {
   renderButton = ({ getPrefixCls }) => {
     let iconNode = null;
     const {
-      prefixCls: customizePrefixCls,
       type,
       size,
       className,
@@ -24,8 +23,9 @@ class Button extends React.Component {
       htmlType,
       href,
       target,
+      style
     } = this.props;
-    const prefixCls = getPrefixCls("btn", customizePrefixCls);
+    const prefixCls = getPrefixCls("btn");
     const classes = Classnames(
       [`${prefixCls}`],
       {
@@ -81,6 +81,10 @@ Button.defaultProps = {
   children: "btn",
   size: "large",
   type: "default",
+  className: "",
+  icon: "",
+  href: "",
+  target: ""
 };
 Button.propTypes = {
   ghost: bool,
@@ -92,6 +96,7 @@ Button.propTypes = {
   href: string,
   target: string,
   onClick: func,
-  icon: oneOfType([string, node]),
+  icon: node,
+  className: string,
 };
 export default Button;

@@ -12,13 +12,12 @@ class CodePreview extends Component {
     };
   }
   renderPreview = ({ getPrefixCls }) => {
-    let { children, code = '', title, language = 'jsx' } = this.props;
+    let { children, code = '', title } = this.props;
     const { isExpand } = this.state;
     const prefixCls = getPrefixCls("code-preview");
     const classes = classNames(prefixCls);
-    code = '```' + language + code + '```';
-  console.log(code)
-
+    code = Array.isArray(code) ? code : [code]
+    code = code.reduce((str, item) => str += ('```' + `${item || '暂无代码'}` + '```\n'), '')
     return (
       <div className={classes}>
         <div className={`${prefixCls}-title`}>{title}</div>

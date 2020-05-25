@@ -1,4 +1,5 @@
 @import "../../common/style/variable.scss";
+@import "../../common/style/mixins.scss";
 $serein-dialog: ".serein-dialog";
 $serein-modal: ".serein-modal";
 
@@ -17,18 +18,26 @@ $serein-modal: ".serein-modal";
   &-mask {
     @extend .fixedFull;
     background: $mask-color;
+    @include fadeEnter($duration: 200);
   }
   &-container {
     z-index: 100;
-    width: 500px;
+    width: 400px;
     position: absolute;
-    top: 30%;
+    top: 15%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 0);
     border-radius: 4px;
     overflow: hidden;
     background: #fff;
+    @include slideEnter($X: -50%, $Y: -30%, $duration: 200);
   }
+  &-centered {
+    top: 50%!important;
+    left: 50%!important;
+    transform: translate(-50%, -100%)!important;
+  }
+
   &-close-btn {
     width: 40px;
     height: 40px;
@@ -65,5 +74,49 @@ $serein-modal: ".serein-modal";
   }
   &-cancel {
     margin-right: 8px;
+  }
+}
+
+.serein-confirm {
+  &-title {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    span {
+      font-size: 18px;
+      font-weight: 600;
+      margin-left: 10px;
+    }
+  }
+  &-content {
+    margin-left: 30px;
+    font-size: 14px;
+    margin-top: 8px;
+    color: rgba(0,0,0,.65);
+  }
+  &-footer {
+    margin: 10px;
+    text-align: right;
+  }
+  &-icon {
+    font-size: 20px;
+  }
+  &-error {
+    color: $theme-danger-color;
+  }
+  &-warning {
+    color: $theme-warning-color;
+  }
+  &-success {
+    color: $theme-success-color;
+  }
+  &-info {
+    color: $theme-primary-color;
+  }
+  &-confirm {
+    color: $theme-warning-color;
+  }
+  &-btn-left {
+    margin-right: 5px;
   }
 }

@@ -1,12 +1,13 @@
 {
   "name": "serein_ui",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "",
-  "main": "./es/index/index.js",
+  "main": "./es/index.js",
   "scripts": {
     "dev": "npm run start",
     "start": "NODE_ENV=development rollup --watch -c ./config/rollup.dev.js",
     "build": "NODE_ENV=production rollup -c ./config/rollup.prod.js",
+    "build:static": "NODE_ENV=production rollup -c ./config/rollup.static.js",
     "test": "jest -u"
   },
   "files": [
@@ -46,6 +47,7 @@
     "babel-jest": "^26.0.1",
     "classnames": "^2.2.6",
     "cssnano": "^4.1.10",
+    "dark-utils": "^1.0.5",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "jest": "^26.0.1",

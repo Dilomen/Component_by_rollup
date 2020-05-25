@@ -48,7 +48,7 @@ const commonPlugin = [
     namedExports: {
       "react": ["createElement", "Component", "isValidElement"],
       "react-is": ["isValidElementType"],
-      "prop-types": ["func", "oneOf", "oneOfType", "object", "string", "bool", "node"]
+      "prop-types": ["func", "oneOf", "oneOfType", "object", "string", "bool", "node", "number"]
     },
   }),
   json(),
@@ -66,6 +66,7 @@ const cModuleMap = cModuleNames.reduce((arr, dirname) => {
   }
   return arr;
 }, {});
+console.log('cModuleMap', cModuleMap)
 const createStyle = (cModuleName, path) => ({
   input: { [cModuleName]: path },
   output: {

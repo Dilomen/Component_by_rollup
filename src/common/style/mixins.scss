@@ -1,0 +1,51 @@
+// 多行溢出省略
+@mixin ell($line: 2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $line;
+}
+
+// 动画
+// keyframes
+@mixin keyframes($animationName) {
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+
+@mixin fadeEnter($duration: 350) {
+  animation: fadeIn #{$duration}ms both;
+  @include keyframes(fadeIn) {
+    from {
+      opacity: 0;
+    }
+  }
+}
+
+@mixin fadeLeave($duration: 350) {
+  animation: fadeOut #{$duration}ms both;
+  @include keyframes(fadeOut) {
+    to {
+      opacity: 0;
+    }
+  }
+}
+
+@mixin slideEnter($X: 0, $Y: -100%, $Z: 0, $duration: 350) {
+  animation: downIn #{$duration}ms both;
+  @include keyframes(downIn) {
+    from {
+      transform: translate3d($X, $Y, $Z);
+    }
+  }
+}
+
+@mixin slideLeave($X: 0, $Y: -100%, $Z: 0, $duration: 350) {
+  animation: downOut #{$duration}ms both;
+  @include keyframes(downOut) {
+    to {
+      transform: translate3d($X, $Y, $Z);
+    }
+  }
+}

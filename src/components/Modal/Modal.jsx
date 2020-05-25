@@ -2,23 +2,32 @@ import React from "react";
 import Dialog from "./Dialog";
 import { Button, ConfigConsumer } from "cps";
 import "./index.scss";
-import { string, bool, node } from "prop-types";
+import { string, bool, node, number, object } from "prop-types";
 class Modal extends React.Component {
-  renderFooter = () => {
+  renderFooter = ({ prefixCls }) => {
     const { cancelText, onText, onCancel, onOk } = this.props;
     return (
       <>
-        <Button onClick={onCancel} size="middle" className="serein-modal-cancel">
+        <Button
+          onClick={onCancel}
+          size="middle"
+          className={`${prefixCls}-cancel`}
+        >
           {cancelText}
         </Button>
-        <Button type="primary" onClick={onOk} size="middle" className="serein-modal-ok">
+        <Button
+          type="primary"
+          onClick={onOk}
+          size="middle"
+          className={`${prefixCls}-ok`}
+        >
           {onText}
         </Button>
       </>
     );
   };
 
-  renderModal = () => {
+  renderModal = ({ getPrefixCls }) => {
     const {
       title,
       visible,
@@ -26,23 +35,31 @@ class Modal extends React.Component {
       className,
       children,
       maskClosable,
-      prefixCls,
       wrapClassName,
       maskClassName,
       mask,
       closable,
       destroyOnClose,
       footer,
+      zIndex,
+      width,
+      bodyStyle,
     } = this.props;
+    const prefixCls = getPrefixCls("modal");
     // 默认底部
     let defineFooter = footer;
     if (footer === undefined) {
       defineFooter = (
-        <div className="serein-modal-footer">{this.renderFooter()}</div>
+        <div className={`${prefixCls}-footer`}>
+          {this.renderFooter({ prefixCls })}
+        </div>
       );
     }
     return (
       <Dialog
+        bodyStyle={bodyStyle}
+        width={width}
+        zIndex={zIndex}
         title={title}
         visible={visible}
         onClose={onClose}
@@ -66,6 +83,8 @@ class Modal extends React.Component {
 }
 
 Modal.defaultProps = {
+  width: 600,
+  zIndex: 100,
   visible: false,
   title: "",
   className: "",
@@ -76,11 +95,14 @@ Modal.defaultProps = {
   maskClosable: true,
   destroyOnClose: false,
   prefixCls: "",
-  cancelText: "取消", 
-  onText: "确定"
+  cancelText: "取消",
+  onText: "确定",
+  centered: false,
 };
 
 Modal.propTypes = {
+  width: number,
+  zIndex: number,
   title: string,
   className: string,
   wrapClassName: string,
@@ -93,7 +115,9 @@ Modal.propTypes = {
   prefixCls: string,
   footer: node,
   cancelText: string,
-  onText: string
+  onText: string,
+  centered: bool,
+  bodyStyle: object,
 };
 
 export default Modal;

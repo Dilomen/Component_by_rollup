@@ -5,9 +5,9 @@ class Space extends React.Component {
     const { children } = this.props;
     return (
       <div className="serein-space-wrap" style={{ display: "inline-flex" }}>
-        {React.Children.map(children, function(child) {
-          return <div style={{ marginRight: "8px" }}>{child}</div>;
-        })}
+        {React.Children.map(children, (child) => 
+          <div style={{ marginRight: "8px" }}>{child}</div>
+        )}
       </div>
     );
   };

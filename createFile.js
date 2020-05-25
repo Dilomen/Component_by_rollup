@@ -20,7 +20,7 @@ process.stdin.on("data", async (input) => {
 import './index.scss';
 class ${input} extends React.Component {
     render() { 
-        return null;
+        return <>${input}</>;
     }
 }
     
@@ -43,10 +43,16 @@ export default ${input};`,
         getRePath(viewPath, `${input}Show.jsx`),
         `import React from "react";
 import { ${input} } from "cps";
+import renderInstruction from "./instruction";
 import './index.scss';
 class ${input}Show extends React.Component {
     render() { 
-        return null;
+        return <>
+          <div
+            className="instruction"
+            dangerouslySetInnerHTML={{ __html: renderInstruction }}
+          ></div>
+        </>;
     }
 }
     
@@ -59,7 +65,17 @@ export default ${input}Show;`,
         "utf-8"
       );
       fs.writeFileSync(getRePath(viewPath, "index.scss"), "");
-      fs.writeFileSync(getRePath(viewPath, "instruction.js"), "");
+      fs.writeFileSync(
+        getRePath(viewPath, "instruction.js"),
+        `
+  import { transferFile } from "utils";
+
+  const instrction = '';
+  const renderInstruction = transferFile(instrction);
+
+  export default renderInstruction;
+`
+      );
     } catch (err) {
       console.log(err);
     } finally {

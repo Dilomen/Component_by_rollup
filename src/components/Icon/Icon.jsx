@@ -3,19 +3,19 @@ import { ReactSVG } from "react-svg";
 import "./Icon.css";
 class Icon extends Component {
   renderIcon = () => {
-    const { icon } = this.props;
+    const { icon, className = "" } = this.props;
     if (typeof icon === "string" && icon.slice(0, 3) !== "<svg") {
-      return <i className={`iconfont icon-${icon}`}></i>;
+      return <i className={`iconfont icon-${icon} ${className}`}></i>;
     }
     if (isValidElement(icon) || icon instanceof Element) {
-      return icon;
+      return <i className={className}>{icon}</i>;
     }
-    return <ReactSVG src={icon}></ReactSVG>;
+    return <ReactSVG src={icon} className={className}></ReactSVG>;
   };
   render() {
-    const { icon, className = "" } = this.props;
+    const { icon } = this.props;
     if (!icon) return null;
-    return <i className={className}>{this.renderIcon()}</i>;
+    return <>{this.renderIcon()}</>;
   }
 }
 
