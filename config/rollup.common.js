@@ -48,7 +48,7 @@ const commonPlugin = [
     namedExports: {
       "react": ["createElement", "Component", "isValidElement"],
       "react-is": ["isValidElementType"],
-      "prop-types": ["func", "oneOf", "oneOfType", "object", "string", "bool", "node", "number"]
+      "prop-types": ["func", "oneOf", "oneOfType", "object", "string", "bool", "node", "number", "array"]
     },
   }),
   json(),

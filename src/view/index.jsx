@@ -9,13 +9,15 @@ import Icon from "./IconShow";
 import Modal from "./ModalShow";
 import Notification from "./NotificationShow";
 import DragList from './DragListShow'
+import previewImage from './previewImageShow'
 const routers = [
   { name: "开始使用", path: "/start", component: Start },
   { name: "Button", path: "/button", component: Button },
   { name: "Icon", path: "/icon", component: Icon },
   { name: "Modal", path: "/modal", component: Modal },
-  {name: "Notification", path: "/notification", component: Notification},
+  // {name: "Notification", path: "/notification", component: Notification},
   { name: "DragList", path: "/dragList", component: DragList },
+  { name: "previewImage", path: "/previewImage", component: previewImage },
 ];
 
 const App = () => (

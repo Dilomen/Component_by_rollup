@@ -1,5 +1,5 @@
 import React from "react";
-import { string, func, bool } from "prop-types";
+import { string, func, bool, oneOf } from "prop-types";
 import { tryPromiseFunc } from "dark-utils";
 import "./index.scss";
 // 通过闭包来区分多个DragList组件
@@ -60,8 +60,8 @@ class DragList extends React.Component {
   handleMouseMove = async (e) => {
     const { isCopyNode, beforeDragMove } = this.props;
     window.getSelection
-    ? window.getSelection().removeAllRanges()
-    : document.selection.empty();
+      ? window.getSelection().removeAllRanges()
+      : document.selection.empty();
     let _moveX = e.clientX;
     let _moveY = e.clientY;
     this.currentNode.classList.add("serein-draping-item");
@@ -85,8 +85,28 @@ class DragList extends React.Component {
     );
     if (isContinue === false) return false;
     if (this.pointNode) {
-      let _pointSite = this.getEleSizeAndSite(this.pointNode);
+      this.handleDomMoveIn(_moveX, _moveY);
+    }
+  };
+
+  handleDomMoveIn = (_moveX, _moveY) => {
+    const { direction } = this.props
+    let _pointSite = this.getEleSizeAndSite(this.pointNode);
+
+    if (direction === "vertical") {
       if (_moveY <= _pointSite.y + _pointSite.height / 2) {
+        this.pointNode.parentNode.insertBefore(
+          this.currentNode,
+          this.pointNode
+        );
+      } else {
+        this.pointNode.parentNode.insertBefore(
+          this.currentNode,
+          this.pointNode.nextElementSibling
+        );
+      }
+    } else {
+      if (_moveX <= _pointSite.x + _pointSite.width / 2) {
         this.pointNode.parentNode.insertBefore(
           this.currentNode,
           this.pointNode
@@ -154,12 +174,12 @@ class DragList extends React.Component {
   };
 
   render() {
-    const { children } = this.props;
+    const { children, itemClassName } = this.props;
     return (
       <div ref={this.dragList} className={`serein-dragList-wrap`}>
         {React.Children.map(children, (child, index) => (
           <div
-            className="serein-dragList-item"
+            className={`serein-dragList-item ${itemClassName}`}
             id={`serein-dragList-item-${index}`}
             data-key={child.key}
           >
@@ -173,6 +193,8 @@ class DragList extends React.Component {
 
 DragList.defaultProps = {
   isCopyNode: true,
+  direction: "vertical",
+  itemClassName: ''
 };
 
 DragList.propTypes = {
@@ -180,5 +202,7 @@ DragList.propTypes = {
   beforeDragMove: func,
   afterDragEnd: func,
   isCopyNode: bool,
+  itemClassName: string,
+  direction: oneOf(["horizontal", "vertical"]),
 };
 export default DragList;

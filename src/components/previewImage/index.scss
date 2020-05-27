@@ -1,0 +1,68 @@
+@import "../../common/style/variable.scss";
+$serein-preview: serein-preview-image;
+.icon {
+  font-size: 50px;
+  color: $border-color;
+  &:hover {
+    color: rgb(175, 175, 175);
+    cursor: pointer;
+  }
+}
+.#{$serein-preview} {
+  &-wrap {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.9);
+  }
+  &-close {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    i {
+      @extend .icon;
+    }
+  }
+  &-left {
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    i {
+      @extend .icon;
+    }
+  }
+  &-right {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    i {
+      @extend .icon;
+    }
+  }
+  &-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    img {
+      width: 100%;
+      height: 100%;
+      max-width: 1200px;
+      max-height: 800px;
+      user-select: none;
+    }
+  }
+  &-error {
+    font-size: 40px;
+    color: #fff;
+    width: 400px;
+    height: 250px;
+    background-color: rgba(153, 153, 153, 0.678);
+    text-align: center;
+    line-height: 250px;
+  }
+}

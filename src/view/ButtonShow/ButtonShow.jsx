@@ -78,7 +78,7 @@ class Form extends React.Component {
           </Space>
         </CodePreview>
 
-        <CodePreview title="灵魂按钮" code={blockCode}>
+        <CodePreview title="块状" code={blockCode}>
           <Button type="primary" block>
             确定
           </Button>

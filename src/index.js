@@ -6,3 +6,4 @@ export { default as Modal } from "./components/Modal";
 export { default as Space } from "./components/Space";
 export { default as Notification } from "./components/Notification";
 export { default as DragList } from "./components/DragList";
+export { default as previewImage } from "./components/previewImage";

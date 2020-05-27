@@ -8,14 +8,12 @@ const installCode = `npm install -D serein_ui
 yarn add -D serein_ui
 `;
 
-const useCode = `
-import {Modal} from 'serein_ui'
+const useCode = `import {Modal} from 'serein_ui'
 import 'serein_ui/es/index.css'
 ReactDOM.render(<Modal visible={true}>Hello Serein</Modal>, document.getElementById('root'))
 `;
 
-const importCode = `
-yarn add -D serein-import 
+const importCode = `yarn add -D serein-import 
 或者 npm install -D serein-import
 
 const sereinImport = require("serein-import");

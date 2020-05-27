@@ -1,7 +1,8 @@
 .serein-drag-list {
   background: #b9b4b4;
 }
-.serein-drag-item {
+
+.serein-drag-item-common {
   height: 50px;
   border: 1px solid #333;
   list-style: none;
@@ -10,4 +11,12 @@
   width: 400px;
   line-height: 50px;
   background: #999;
+}
+.serein-drag-item {
+  @extend .serein-drag-item-common;
+}
+
+.serein-drag-horizontal-item {
+  @extend .serein-drag-item-common;
+  display: inline-block;
 }
