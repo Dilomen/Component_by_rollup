@@ -7,3 +7,5 @@ export { default as Space } from "./components/Space";
 export { default as Notification } from "./components/Notification";
 export { default as DragList } from "./components/DragList";
 export { default as previewImage } from "./components/previewImage";
+export { CheckboxGroup, Checkbox } from "./components/Checkbox";
+export { default as Animate } from "./components/Animate";

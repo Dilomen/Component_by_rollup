@@ -1,0 +1,36 @@
+@import "../../common/style/variable.scss";
+
+$serein-checkbox: "serein-checkbox";
+.#{$serein-checkbox} {
+  &-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    input[type="checkbox"] {
+      border: 1px solid #d9d9d9;
+      background-color: #fff;
+      width: 16px;
+      height: 16px;
+      border-radius: 10px;
+      &:hover {
+        box-shadow: -2px -2px 1px $theme-primary-color inset,
+          2px 2px 1px $theme-primary-color inset;
+        background-color: $theme-primary-color;
+      }
+
+      &:checked {
+        background-color: $theme-primary-color;
+        border-color: $theme-primary-color;
+      }
+      &:disabled,
+      &:checked {
+        &:hover {
+          box-shadow: none;
+        }
+      }
+    }
+  }
+  &-disabled {
+    color: rgb(178, 170, 170);
+  }
+}

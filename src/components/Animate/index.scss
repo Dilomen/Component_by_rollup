@@ -1,0 +1,20 @@
+@import "../../common/style/variable.scss";
+@import "../../common/style/mixins.scss";
+$serein-btn: #{$serein-prefix}-animate;
+.#{$serein-btn} {
+    &-fade-enter {
+        @include fadeEnter($duration: 2000);
+    }
+    
+    &-fade-leave {
+        @include fadeLeave($duration: 2000);
+    }
+
+    &-slide-enter {
+        @include slideEnter($duration: 200);
+    }
+    
+    &-slide-leave {
+        @include slideLeave($duration: 200);
+    }
+}

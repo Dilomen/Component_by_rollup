@@ -1,6 +1,6 @@
 {
   "name": "serein_ui",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "",
   "main": "./es/index.js",
   "scripts": {
