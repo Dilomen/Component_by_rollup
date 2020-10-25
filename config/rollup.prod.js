@@ -4,7 +4,6 @@ const autoprefixer = require("autoprefixer");
 const cssnano = require("cssnano");
 const clear = require("rollup-plugin-clear");
 const { commonPlugin, CSSGroup, cModuleMap } = require("./rollup.common");
-console.log('cModuleMap', cModuleMap, CSSGroup)
 module.exports = [
   {
     input: "./src/index.js",

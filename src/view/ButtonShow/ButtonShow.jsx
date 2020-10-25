@@ -1,38 +1,6 @@
 import React from "react";
 import { Button, Icon, CodePreview, Space } from "cps";
-import renderInstruction from "./instruction";
-
-const typeCode = `jsx
-    <Button type='primary'>确定</Button>
-    <Button>默认</Button>
-    <Button type="danger">danger</Button>
-    <Button type="link" href="http://www.baidu.com">Link</Button>
-    <Button icon={<Icon icon={"search"}></Icon>}></Button>
-    <Button type="primary">确定</Button>
-    <Button>默认</Button>
-    <Button type="danger">danger</Button>
-    <Button type="link" href="http://www.baidu.com">Link</Button>
-    <Button icon={<Icon icon={"search"}></Icon>}></Button>
-`;
-
-const sizeCode = `jsx
-    <Button type="link" size="middle">Link</Button>
-    <Button type="primary" size="small">确定</Button>
-    <Button size="middle">默认</Button>
-    <Button type="danger" size="large">danger</Button>
-`;
-
-const ghostCode = `jsx
-    <Button type="primary" ghost>确定</Button>
-    <Button ghost>默认</Button>
-    <Button type="danger" ghost>danger</Button>
-`;
-
-const blockCode = `jsx
-    <Button type="primary" block>确定</Button>
-    <Button block>默认</Button>
-    <Button type="danger" block>danger</Button>
-`
+import renderInstruction, { typeCode, sizeCode, ghostCode, blockCode } from "./instruction";
 
 class Form extends React.Component {
   state = {};

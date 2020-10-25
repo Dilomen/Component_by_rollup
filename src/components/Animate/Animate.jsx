@@ -5,50 +5,55 @@ import Classnames from "classnames";
 import { bool, oneOf } from "prop-types";
 import { createRandomStr } from "dark-utils";
 
-function setChildKey(children) {
-  if (React.isValidElement(children)) {
-    if (!children.key) {
-      return React.cloneElement(children, {
-        key: `serein-animate-${createRandomStr()}`,
-      });
-    }
-  }
-  return children;
-}
+// function setChildKey(children) {
+//   if (React.isValidElement(children)) {
+//     if (!children.key) {
+//       return React.cloneElement(children, {
+//         key: `serein-animate-${createRandomStr()}`,
+//       });
+//     }
+//   }
+//   return children;
+// }
 
-function toArrayChildren(children) {
-  let node = [];
-  React.Children.map(children, (child) => {
-    node.push(setChildKey(child));
-  });
-  return node;
-}
+// function toArrayChildren(children) {
+//   let node = [];
+//   React.Children.map(children, (child) => {
+//     node.push(setChildKey(child));
+//   });
+//   return node;
+// }
 
 class Animate extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      stateChildren: toArrayChildren(props.children),
-    };
+    // this.state = {
+    //   stateChildren: toArrayChildren(props.children),
+    // };
     this.childrenRefs = {};
   }
   renderChild = ({ getPrefixCls }) => {
-    const { stateChildren } = this.state;
+    // const { stateChildren } = this.state;
     const { animateName, enter = true } = this.props;
     const prefixCls = getPrefixCls("animate");
     const classes = Classnames({
       [`${prefixCls}-${animateName}-enter`]: enter,
       [`${prefixCls}-${animateName}-leave`]: !enter,
     });
-    return stateChildren.map((child) => (
-      <div
-        key={child.key}
-        ref={(block) => (this.childrenRefs[child.key] = block)}
+    return <div
         className={classes}
       >
-        {child}
+        {this.props.children}
       </div>
-    ));
+    // stateChildren.map((child) => (
+    //   <div
+    //     key={child.key}
+    //     ref={(block) => (this.childrenRefs[child.key] = block)}
+    //     className={classes}
+    //   >
+    //     {child}
+    //   </div>
+    // ));
   };
 
   render() {

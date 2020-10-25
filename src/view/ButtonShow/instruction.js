@@ -1,5 +1,37 @@
 import { transferFile } from "utils";
 
+export const typeCode = `jsx
+    <Button type='primary'>确定</Button>
+    <Button>默认</Button>
+    <Button type="danger">danger</Button>
+    <Button type="link" href="http://www.baidu.com">Link</Button>
+    <Button icon={<Icon icon={"search"}></Icon>}></Button>
+    <Button type="primary">确定</Button>
+    <Button>默认</Button>
+    <Button type="danger">danger</Button>
+    <Button type="link" href="http://www.baidu.com">Link</Button>
+    <Button icon={<Icon icon={"search"}></Icon>}></Button>
+`;
+
+export const sizeCode = `jsx
+    <Button type="link" size="middle">Link</Button>
+    <Button type="primary" size="small">确定</Button>
+    <Button size="middle">默认</Button>
+    <Button type="danger" size="large">danger</Button>
+`;
+
+export const ghostCode = `jsx
+    <Button type="primary" ghost>确定</Button>
+    <Button ghost>默认</Button>
+    <Button type="danger" ghost>danger</Button>
+`;
+
+export const blockCode = `jsx
+    <Button type="primary" block>确定</Button>
+    <Button block>默认</Button>
+    <Button type="danger" block>danger</Button>
+`
+
 const instrction = `
 # Button
 
