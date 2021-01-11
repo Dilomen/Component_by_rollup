@@ -1,6 +1,6 @@
 # 开始
 
-项目网站：[http://www.dilomen.com:9000/](http://www.dilomen.com:9000/)
+项目网站：[http://serein.dilomen.com:9000/](http://www.dilomen.com:9000/)
 
 ## 安装
 
