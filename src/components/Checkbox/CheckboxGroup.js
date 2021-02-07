@@ -10,7 +10,7 @@ class CheckboxGroup extends React.Component {
   }
 
   static getDerivedStateFromProps(nextProps) {
-    if ("value" in nextProps) {
+    if (nextProps.hasOwnProperty('value') ) {
       return {
         value: nextProps.value || [],
       };

@@ -35,19 +35,30 @@ npm install -D serein-import
 const sereinImport = require("serein-import");
 // 然后配置"babel"的plugins就大功告成了
 
-plugins: [
-        ...
-        [
-        sereinImport, { libraryName: "serein_ui", libraryDirectory: "es"},
-        ],
+{
+    test: /\.jsx?$/,
+    exclude: /node_modules/,
+    use: [
+        {
+            loader: "babel-loader",
+            options: {
+                presets: ["@babel/preset-env", "@babel/preset-react"],
+                plugins: [
+                    [
+                        sereinImport,
+                        { libraryName: "serein_ui", libraryDirectory: "es"},
+                    ],
+                ],
+            },
+        },
     ],
-}
+},
 ```
 
 // 代码就会被转化成指定的路径
 
 ```js
-import { Button } from "serein_ui";
+import { Button } from 'serein_ui';
 ```
 
 会被转化为
