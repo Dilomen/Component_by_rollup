@@ -1,6 +1,6 @@
 # 开始
 
-项目网站：[http://serein.dilomen.com:9000/](http://www.dilomen.com:9000/)
+项目网站：[http://serein.dilomen.com:9000/](http://serein.dilomen.com:9000/)
 
 ## 安装
 
@@ -17,8 +17,7 @@ yarn add -D serein_ui
 ```jsx
 import {Modal} from 'serein_ui'
 import 'serein_ui/es/index.css'
-ReactDOM.render(<Modal visible={true}>Hello Serein</Modal>, document.getElementById('root'))
-`;
+ReactDOM.render(<Modal visible={true}>Hello Serein</Modal>, document.getElementById('root'));
 ```
 
 ### 按需加载

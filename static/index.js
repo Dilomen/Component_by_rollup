@@ -8373,7 +8373,7 @@
     }], [{
       key: "getDerivedStateFromProps",
       value: function getDerivedStateFromProps(nextProps) {
-        if ("value" in nextProps) {
+        if (nextProps.hasOwnProperty('value')) {
           return {
             value: nextProps.value || []
           };
@@ -8398,6 +8398,86 @@
     disabled: propTypes_6
   };
 
+  function _createSuper$d(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$d(); return function () { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+  function _isNativeReflectConstruct$d() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+  //   if (React.isValidElement(children)) {
+  //     if (!children.key) {
+  //       return React.cloneElement(children, {
+  //         key: `serein-animate-${createRandomStr()}`,
+  //       });
+  //     }
+  //   }
+  //   return children;
+  // }
+  // function toArrayChildren(children) {
+  //   let node = [];
+  //   React.Children.map(children, (child) => {
+  //     node.push(setChildKey(child));
+  //   });
+  //   return node;
+  // }
+
+  var Animate = /*#__PURE__*/function (_React$Component) {
+    _inherits(Animate, _React$Component);
+
+    var _super = _createSuper$d(Animate);
+
+    function Animate(props) {
+      var _this;
+
+      _classCallCheck(this, Animate);
+
+      _this = _super.call(this, props); // this.state = {
+      //   stateChildren: toArrayChildren(props.children),
+      // };
+
+      _defineProperty(_assertThisInitialized(_this), "renderChild", function (_ref) {
+        var _Classnames;
+
+        var getPrefixCls = _ref.getPrefixCls;
+        // const { stateChildren } = this.state;
+        var _this$props = _this.props,
+            animateName = _this$props.animateName,
+            _this$props$enter = _this$props.enter,
+            enter = _this$props$enter === void 0 ? true : _this$props$enter;
+        var prefixCls = getPrefixCls("animate");
+        var classes = classnames((_Classnames = {}, _defineProperty(_Classnames, "".concat(prefixCls, "-").concat(animateName, "-enter"), enter), _defineProperty(_Classnames, "".concat(prefixCls, "-").concat(animateName, "-leave"), !enter), _Classnames));
+        return /*#__PURE__*/React__default.createElement("div", {
+          className: classes
+        }, _this.props.children); // stateChildren.map((child) => (
+        //   <div
+        //     key={child.key}
+        //     ref={(block) => (this.childrenRefs[child.key] = block)}
+        //     className={classes}
+        //   >
+        //     {child}
+        //   </div>
+        // ));
+      });
+
+      _this.childrenRefs = {};
+      return _this;
+    }
+
+    _createClass(Animate, [{
+      key: "render",
+      value: function render() {
+        return /*#__PURE__*/React__default.createElement(Consumer, null, this.renderChild);
+      }
+    }]);
+
+    return Animate;
+  }(React__default.Component);
+
+  Animate.defaultProps = {
+    enter: true
+  };
+  Animate.propTypes = {
+    enter: propTypes_6,
+    animateName: propTypes_2(["fade", "toggle", "slide"])
+  };
+
   function handleCode(code, language) {
     return "```" + language + "\n" + code + "```\n";
   }
@@ -8408,14 +8488,14 @@
   var instrction = "\n# \u5F00\u59CB\n\n## \u5B89\u88C5\n".concat(handleCode(installCode, "bash"), "\n\n## \u4F7F\u7528\n").concat(handleCode(useCode, "jsx"), " \n\n### \u6309\u9700\u52A0\u8F7D\n").concat(handleCode(importCode, "js"));
   var renderInstruction = transferFile(instrction);
 
-  function _createSuper$d(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$d(); return function () { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+  function _createSuper$e(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$e(); return function () { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-  function _isNativeReflectConstruct$d() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+  function _isNativeReflectConstruct$e() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
   var Start = /*#__PURE__*/function (_React$Component) {
     _inherits(Start, _React$Component);
 
-    var _super = _createSuper$d(Start);
+    var _super = _createSuper$e(Start);
 
     function Start() {
       var _this;
@@ -8448,21 +8528,21 @@
     return Start;
   }(React__default.Component);
 
-  var instrction$1 = "\n# Button\n\n| \u5C5E\u6027      | \u8BF4\u660E                                                  | \u7C7B\u578B    | \u9ED8\u8BA4\u503C  |\n| --------- | ----------------------------------------------------- | ------- | ------- |\n| type      | \u8BBE\u7F6E\u6309\u94AE\u7C7B\u578B\uFF0C\u53EF\u9009\u503C\u4E3A primary default danger link    | string  | default |\n| size      | \u8BBE\u7F6E\u6309\u94AE\u7C7B\u578B\uFF0C\u53EF\u9009\u503C\u4E3A small middle large             | string  | large   |\n| ghost     | \u5E7D\u7075\u5C5E\u6027                                              | boolean | false   |\n| href      | \u70B9\u51FB\u8DF3\u8F6C\u7684\u5730\u5740\uFF0C\u6307\u5B9A\u6B64\u5C5E\u6027 button \u7684\u884C\u4E3A\u548C a \u94FE\u63A5\u4E00\u81F4 | string  | -       |  |\n| target    | \u76F8\u5F53\u4E8E a \u94FE\u63A5\u7684 target \u5C5E\u6027\uFF0Chref \u5B58\u5728\u65F6\u751F\u6548          | string  | -       |\n| htmlType  | \u8BBE\u7F6E button \u539F\u751F\u7684 type \u503C                            | string  | button  |\n| icon      | \u8BBE\u7F6E\u6309\u94AE\u7684\u56FE\u6807\u7C7B\u578B                                    | string  | -       |\n| className | \u6DFB\u52A0 class \u6837\u5F0F                                       | object  | {}      |\n| onClick   | \u70B9\u51FB button                                           | func    | -       |\n| children  | button \u5185\u5BB9                                           | -       | 'btn'   |\n| block     | \u662F\u5426\u5757\u72B6\u6837\u5F0F                                          | boolean | false   |\n| style     | \u884C\u5185\u6837\u5F0F                                              | object  | -       |\n";
-  var renderInstruction$1 = transferFile(instrction$1);
-
-  function _createSuper$e(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$e(); return function () { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-  function _isNativeReflectConstruct$e() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
   var typeCode = "jsx\n    <Button type='primary'>\u786E\u5B9A</Button>\n    <Button>\u9ED8\u8BA4</Button>\n    <Button type=\"danger\">danger</Button>\n    <Button type=\"link\" href=\"http://www.baidu.com\">Link</Button>\n    <Button icon={<Icon icon={\"search\"}></Icon>}></Button>\n    <Button type=\"primary\">\u786E\u5B9A</Button>\n    <Button>\u9ED8\u8BA4</Button>\n    <Button type=\"danger\">danger</Button>\n    <Button type=\"link\" href=\"http://www.baidu.com\">Link</Button>\n    <Button icon={<Icon icon={\"search\"}></Icon>}></Button>\n";
   var sizeCode = "jsx\n    <Button type=\"link\" size=\"middle\">Link</Button>\n    <Button type=\"primary\" size=\"small\">\u786E\u5B9A</Button>\n    <Button size=\"middle\">\u9ED8\u8BA4</Button>\n    <Button type=\"danger\" size=\"large\">danger</Button>\n";
   var ghostCode = "jsx\n    <Button type=\"primary\" ghost>\u786E\u5B9A</Button>\n    <Button ghost>\u9ED8\u8BA4</Button>\n    <Button type=\"danger\" ghost>danger</Button>\n";
   var blockCode = "jsx\n    <Button type=\"primary\" block>\u786E\u5B9A</Button>\n    <Button block>\u9ED8\u8BA4</Button>\n    <Button type=\"danger\" block>danger</Button>\n";
+  var instrction$1 = "\n# Button\n\n| \u5C5E\u6027      | \u8BF4\u660E                                                  | \u7C7B\u578B    | \u9ED8\u8BA4\u503C  |\n| --------- | ----------------------------------------------------- | ------- | ------- |\n| type      | \u8BBE\u7F6E\u6309\u94AE\u7C7B\u578B\uFF0C\u53EF\u9009\u503C\u4E3A primary default danger link    | string  | default |\n| size      | \u8BBE\u7F6E\u6309\u94AE\u7C7B\u578B\uFF0C\u53EF\u9009\u503C\u4E3A small middle large             | string  | large   |\n| ghost     | \u5E7D\u7075\u5C5E\u6027                                              | boolean | false   |\n| href      | \u70B9\u51FB\u8DF3\u8F6C\u7684\u5730\u5740\uFF0C\u6307\u5B9A\u6B64\u5C5E\u6027 button \u7684\u884C\u4E3A\u548C a \u94FE\u63A5\u4E00\u81F4 | string  | -       |  |\n| target    | \u76F8\u5F53\u4E8E a \u94FE\u63A5\u7684 target \u5C5E\u6027\uFF0Chref \u5B58\u5728\u65F6\u751F\u6548          | string  | -       |\n| htmlType  | \u8BBE\u7F6E button \u539F\u751F\u7684 type \u503C                            | string  | button  |\n| icon      | \u8BBE\u7F6E\u6309\u94AE\u7684\u56FE\u6807\u7C7B\u578B                                    | string  | -       |\n| className | \u6DFB\u52A0 class \u6837\u5F0F                                       | object  | {}      |\n| onClick   | \u70B9\u51FB button                                           | func    | -       |\n| children  | button \u5185\u5BB9                                           | -       | 'btn'   |\n| block     | \u662F\u5426\u5757\u72B6\u6837\u5F0F                                          | boolean | false   |\n| style     | \u884C\u5185\u6837\u5F0F                                              | object  | -       |\n";
+  var renderInstruction$1 = transferFile(instrction$1);
+
+  function _createSuper$f(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$f(); return function () { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+  function _isNativeReflectConstruct$f() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
   var Form = /*#__PURE__*/function (_React$Component) {
     _inherits(Form, _React$Component);
 
-    var _super = _createSuper$e(Form);
+    var _super = _createSuper$f(Form);
 
     function Form() {
       var _this;
@@ -8545,15 +8625,15 @@
     return Form;
   }(React__default.Component);
 
-  function _createSuper$f(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$f(); return function () { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+  function _createSuper$g(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$g(); return function () { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-  function _isNativeReflectConstruct$f() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+  function _isNativeReflectConstruct$g() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
   var IconGroups = ["check-circle", "close-circle", "info-circle", "left-circle", "down-circle", "minus-circle", "plus-circle", "play-circle", "question-circle", "right-circle", "time out", "up-circle", "warning-circle", "sync", "redo", "message", "poweroff", "pie chart", "setting", "eye", "location", "edit-square", "export", "save", "app store", "close-square", "control", "code library", "detail", "minus-square", "plus-square", "check-square", "like", "unlike", "folder", "folder-open", "folder-add", "scan", "right", "left", "up", "down", "check", "close", "check-circle-fill", "left-circle-fill", "down-circle-fill", "minus-circle-fill", "close-circle-fill", "info-circle-fill", "up-circle-fill", "right-circle-fill", "plus-circle-fill", "search", "question-circle-fill", "warning-circle-fill", "check-square-fill", "folder-fill", "folder-open-fill"];
 
   var IconShow = /*#__PURE__*/function (_Component) {
     _inherits(IconShow, _Component);
 
-    var _super = _createSuper$f(IconShow);
+    var _super = _createSuper$g(IconShow);
 
     function IconShow(props) {
       var _this;
@@ -8608,20 +8688,20 @@
     return IconShow;
   }(React.Component);
 
-  var instrction$2 = "\n# Modal\n\n| \u5C5E\u6027           | \u8BF4\u660E                                           | \u7C7B\u578B    | \u9ED8\u8BA4\u503C |\n| -------------- | ---------------------------------------------- | ------- | ------ |\n| width          | \u5F39\u51FA\u6846\u7684\u5BBD\u5EA6                                   | number  | 600    |\n| zIndex         | \u5F39\u51FA\u6846\u7684 z-index \u5C5E\u6027                          | number  | 100    |\n| visible        | \u63A7\u5236\u5F39\u51FA\u6846\u7684\u663E\u793A                               | boolean | false  |\n| title          | \u5F39\u51FA\u6846\u6807\u9898                                     | string  | -      |\n| className      | \u5F39\u51FA\u6846\u5185\u5BB9\u6837\u5F0F                                 | string  | -      |\n| wrapClassName  | \u5F39\u51FA\u6846\u6574\u4E2A\u5305\u88F9\u6837\u5F0F                             | string  | -      |\n| maskClassName  | \u9634\u5F71\u906E\u7F69\u6837\u5F0F                                   | string  | -      |\n| mask           | \u662F\u5426\u9700\u8981\u9634\u5F71\u906E\u7F69                               | string  | button |\n| closable       | \u5173\u95ED\u6309\u94AE                                       | boolean | true   |\n| maskClosable   | \u662F\u5426\u53EF\u70B9\u51FB\u9634\u5F71\u906E\u7F69\u5173\u95ED                         | boolean | true   |\n| destroyOnClose | \u5173\u95ED\u662F\u5426\u9500\u6BC1\u7EC4\u4EF6                               | boolean | false  |\n| cancelText     | \u53D6\u6D88\u6587\u672C                                       | string  | '\u53D6\u6D88\u2018 |\n| onText         | \u786E\u8BA4\u6587\u672C                                       | string  | '\u786E\u5B9A' |\n| onCancel       | \u53D6\u6D88\u4E8B\u4EF6                                       | func    | -      |\n| onOk           | \u786E\u8BA4\u4E8B\u4EF6                                       | func    | -      |\n| footer         | \u5E95\u90E8\u5185\u5BB9\uFF0C\u53EF\u4EE5\u8BBE\u7F6E\u4E3A null \u548C false\uFF0C\u4E0D\u9700\u8981\u5E95\u90E8 | node    | -      |\n| bodyStyle      | \u5F39\u51FA\u6846\u6837\u5F0F                                     | object  | -      |\n";
-  var renderInstruction$2 = transferFile(instrction$2);
-
-  function _createSuper$g(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$g(); return function () { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-  function _isNativeReflectConstruct$g() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
   var baseCode = "jsx\n<Button type=\"primary\"\n  onClick={() => {\n    this.setState({ baseVisible: true });\n  }}\n>\u6253\u5F00\u5F39\u6846</Button>\n<Modal\n  title=\"\u6211\u7684\u8BA1\u5212\"\n  visible={baseVisible}\n  onClose={() => this.setState({ baseVisible: false })}\n>\n  <li>\u4EFB\u52A1\u4E00</li>\n  <li>\u4EFB\u52A1\u4E8C</li>\n  <li>\u4EFB\u52A1\u4E09</li>\n</Modal>\n";
   var customCode = "jsx\n<Button type=\"primary\"\n  onClick={() => {\n    this.setState({ customVisible: true });\n  }}>\n  \u6253\u5F00\u5F39\u6846\n</Button>\n<Modal\n  title=\"\u6211\u7684\u8BA1\u5212\"\n  visible={customVisible}\n  onClose={() => this.setState({ customVisible: false })}\n  footer={<span>\u81EA\u5B9A\u4E49\u5E95\u90E8</span>}\n>\n  <li>\u4EFB\u52A1\u4E00</li>\n</Modal>\n";
   var confirmCode = "jsx\nhandleConfirm = () => {\n  Modal.confirm({ title: \"\u6211\u662F\u6807\u9898\", content: \"\u6211\u662F\u5185\u5BB9\u3002\u3002\u3002\u3002\u3002\u3002\" });\n};\nhandleConfirmError = () => {\n  Modal.error({ title: \"\u6211\u662F\u6807\u9898\", content: \"\u6211\u662Ferror\u3002\u3002\u3002\u3002\u3002\u3002\" });\n};\nhandleConfirmWarn = () => {\n  Modal.warning({ title: \"\u6211\u662F\u6807\u9898\", content: \"\u6211\u662Fwarn\u3002\u3002\u3002\u3002\u3002\u3002\" });\n};\nhandleConfirmSuccess = () => {\n  Modal.success({ title: \"\u6211\u662F\u6807\u9898\", content: \"\u6211\u662Fsuccess\u3002\u3002\u3002\u3002\u3002\u3002\" });\n};\nhandleConfirmInfo = () => {\n  Modal.info({ title: \"\u6211\u662F\u6807\u9898\", content: \"\u6211\u662Finfo\u3002\u3002\u3002\u3002\u3002\u3002\" });\n};\n\n<Button onClick={this.handleConfirm}>confirm</Button>\n<Button onClick={this.handleConfirmError}>Error</Button>\n<Button onClick={this.handleConfirmWarn}>Warning</Button>\n<Button onClick={this.handleConfirmSuccess}>Success</Button>\n<Button onClick={this.handleConfirmInfo}>Info</Button>\n";
+  var instrction$2 = "\n# Modal\n\n| \u5C5E\u6027           | \u8BF4\u660E                                           | \u7C7B\u578B    | \u9ED8\u8BA4\u503C |\n| -------------- | ---------------------------------------------- | ------- | ------ |\n| width          | \u5F39\u51FA\u6846\u7684\u5BBD\u5EA6                                   | number  | 600    |\n| zIndex         | \u5F39\u51FA\u6846\u7684 z-index \u5C5E\u6027                          | number  | 100    |\n| visible        | \u63A7\u5236\u5F39\u51FA\u6846\u7684\u663E\u793A                               | boolean | false  |\n| title          | \u5F39\u51FA\u6846\u6807\u9898                                     | string  | -      |\n| className      | \u5F39\u51FA\u6846\u5185\u5BB9\u6837\u5F0F                                 | string  | -      |\n| wrapClassName  | \u5F39\u51FA\u6846\u6574\u4E2A\u5305\u88F9\u6837\u5F0F                             | string  | -      |\n| maskClassName  | \u9634\u5F71\u906E\u7F69\u6837\u5F0F                                   | string  | -      |\n| mask           | \u662F\u5426\u9700\u8981\u9634\u5F71\u906E\u7F69                               | string  | button |\n| closable       | \u5173\u95ED\u6309\u94AE                                       | boolean | true   |\n| maskClosable   | \u662F\u5426\u53EF\u70B9\u51FB\u9634\u5F71\u906E\u7F69\u5173\u95ED                         | boolean | true   |\n| destroyOnClose | \u5173\u95ED\u662F\u5426\u9500\u6BC1\u7EC4\u4EF6                               | boolean | false  |\n| cancelText     | \u53D6\u6D88\u6587\u672C                                       | string  | '\u53D6\u6D88\u2018 |\n| onText         | \u786E\u8BA4\u6587\u672C                                       | string  | '\u786E\u5B9A' |\n| onCancel       | \u53D6\u6D88\u4E8B\u4EF6                                       | func    | -      |\n| onOk           | \u786E\u8BA4\u4E8B\u4EF6                                       | func    | -      |\n| footer         | \u5E95\u90E8\u5185\u5BB9\uFF0C\u53EF\u4EE5\u8BBE\u7F6E\u4E3A null \u548C false\uFF0C\u4E0D\u9700\u8981\u5E95\u90E8 | node    | -      |\n| bodyStyle      | \u5F39\u51FA\u6846\u6837\u5F0F                                     | object  | -      |\n";
+  var renderInstruction$2 = transferFile(instrction$2);
+
+  function _createSuper$h(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$h(); return function () { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+  function _isNativeReflectConstruct$h() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
   var ModalShow = /*#__PURE__*/function (_React$Component) {
     _inherits(ModalShow, _React$Component);
 
-    var _super = _createSuper$g(ModalShow);
+    var _super = _createSuper$h(ModalShow);
 
     function ModalShow(props) {
       var _this;
@@ -8745,14 +8825,14 @@
   var instrction$3 = "";
   var renderInstruction$3 = transferFile(instrction$3);
 
-  function _createSuper$h(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$h(); return function () { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+  function _createSuper$i(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$i(); return function () { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-  function _isNativeReflectConstruct$h() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+  function _isNativeReflectConstruct$i() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
   var NotificationShow = /*#__PURE__*/function (_React$Component) {
     _inherits(NotificationShow, _React$Component);
 
-    var _super = _createSuper$h(NotificationShow);
+    var _super = _createSuper$i(NotificationShow);
 
     function NotificationShow() {
       _classCallCheck(this, NotificationShow);
@@ -8777,20 +8857,20 @@
     return NotificationShow;
   }(React__default.Component);
 
-  var instrction$4 = "\n# DragList\n\n| \u5C5E\u6027            | \u8BF4\u660E                                                             | \u7C7B\u578B                     | \u9ED8\u8BA4\u503C                         |\n| --------------- | ---------------------------------------------------------------- | ------------------------ | ------------------------------ |\n| isCopyNode      | \u662F\u5426\u663E\u793A\u62D6\u62C9\u5143\u7D20\u6548\u679C                                             | bool                     | true                           |\n| beforeDragStart | \u62D6\u52A8\u524D\u4E8B\u4EF6\uFF0C\u53EF\u4EE5\u8FD4\u56DE false(undefined \u7B49\u4E0D\u4F1A\u963B\u6B62)\uFF0C\u6765\u963B\u6B62\u9ED8\u8BA4\u64CD\u4F5C | func                     | (\u62D6\u62C9\u5143\u7D20) => {}               |\n| beforeDragMove  | \u62D6\u52A8\u4E2D\u4E8B\u4EF6\uFF0C\u53EF\u4EE5\u8FD4\u56DE false(undefined \u7B49\u4E0D\u4F1A\u963B\u6B62)\uFF0C\u6765\u963B\u6B62\u9ED8\u8BA4\u64CD\u4F5C | func                     | (\u62D6\u62C9\u5143\u7D20\uFF0C\u9F20\u6807\u6240\u5728\u5143\u7D20) => {} |\n| afterDragEnd    | \u62D6\u52A8\u5B8C\u6210\u4E8B\u4EF6\uFF0C\u8FD4\u56DE\u65B0\u7684\u6392\u5E8F\u5E8F\u53F7\uFF08key\uFF09                            | func                     | \uFF08keys\uFF09=> {}                  |\n| itemClassName   | \u6BCF\u4E2A\u5B50\u9879\u7684\u6837\u5F0F                                                   | string                   | \"\"                             |\n| direction       | \u6C34\u5E73\u6392\u5E8F\u8FD8\u662F\u5782\u76F4                                                 | \"horizontal\", \"vertical\" | \"vertical\"                     |\n#### \u540C\u4E00\u4E2A\u9875\u9762\u662F\u5426\u6709\u591A\u4E2A DragList \u7EC4\u4EF6\uFF0C\u5982\u679C\u6709\u591A\u4E2A\uFF0C\u4E8B\u4EF6\u5C31\u4F1A\u7ED1\u5B9A\u5230\u5BF9\u5E94\u7684\u7236\u7EC4\u4EF6\uFF0C\u76F8\u4E92\u9694\u79BB\uFF0C\u5982\u679C\u53EA\u6709\u4E00\u4E2A\u90A3\u4E48\u5C31\u7ED1\u5B9A\u5728 document \u4E0A\n";
-  var renderInstruction$4 = transferFile(instrction$4);
-
-  function _createSuper$i(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$i(); return function () { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-  function _isNativeReflectConstruct$i() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
   var verticalCode = ["jsx\nconst arr = [\"\u4EFB\u52A1\u4E00\", \"\u4EFB\u52A1\u4E8C\", \"\u4EFB\u52A1\u4E09\", \"\u4EFB\u52A1\u56DB\", \"\u4EFB\u52A1\u4E94\"];\nrender() {\n  return (\n    <div className=\"serein-drag-list\">\n      <DragList>\n        {arr.map((item) => (\n          <li className=\"serein-drag-item\" key={item}>{item}</li>\n        ))}\n      </DragList>\n    </div>\n  )\n}\n", "css\n.serein-drag-item {\n  height: 50px;\n  border: 1px solid #333;\n  list-style: none;\n  text-align: center;\n  margin: 5px;\n  width: 400px;\n  line-height: 50px;\n  background: #999;\n}\n"];
   var horCode = ["jsx\nconst arr = [\"\u4EFB\u52A1\u4E00\", \"\u4EFB\u52A1\u4E8C\", \"\u4EFB\u52A1\u4E09\", \"\u4EFB\u52A1\u56DB\", \"\u4EFB\u52A1\u4E94\"];\nrender() {\n  return (\n    <div className=\"serein-drag-horizontal-list\">\n      <DragList itemClassName=\"serein-drag-horizontal-item\" direction=\"horizontal\">\n        {arr.map((item) => (\n          <li key={item}>\n            {item}\n          </li>\n        ))}\n      </DragList>\n    </div>\n  )\n}\n", "css\n.serein-drag-horizontal-item {\n  height: 50px;\n  border: 1px solid #333;\n  list-style: none;\n  text-align: center;\n  margin: 5px;\n  width: 400px;\n  line-height: 50px;\n  background: #999;\n  display: inline-block;\n}\n"];
   var eventCode = ["jsx\nconst arr = [\"\u4EFB\u52A1\u4E00\", \"\u4EFB\u52A1\u4E8C\", \"\u4EFB\u52A1\u4E09\", \"\u4EFB\u52A1\u56DB\", \"\u4EFB\u52A1\u4E94\"];\n\nhandleDragEnd = (keys) => {\n  console.log(keys);\n};\nhandleDragMove = (node, pointNode) => {\n  console.log(node, pointNode);\n  // if (...)  return false;\n};\nhandleDragStart = (currentNode) => {\n  console.log(currentNode);\n  // if (...)  return false;\n};\n\nrender() {\n  return (\n    <div className=\"serein-drag-list\">\n    <DragList\n      beforeDragStart={this.handleDragStart}\n      beforeDragMove={this.handleDragMove}\n      afterDragEnd={this.handleDragEnd}\n    >\n      {arr.map((item) => (\n        <li className=\"serein-drag-item\" key={item}>\n          {item}\n        </li>\n      ))}\n    </DragList>\n  </div>)\n}\n"];
+  var instrction$4 = "\n# DragList\n\n| \u5C5E\u6027            | \u8BF4\u660E                                                             | \u7C7B\u578B                     | \u9ED8\u8BA4\u503C                         |\n| --------------- | ---------------------------------------------------------------- | ------------------------ | ------------------------------ |\n| isCopyNode      | \u662F\u5426\u663E\u793A\u62D6\u62C9\u5143\u7D20\u6548\u679C                                             | bool                     | true                           |\n| beforeDragStart | \u62D6\u52A8\u524D\u4E8B\u4EF6\uFF0C\u53EF\u4EE5\u8FD4\u56DE false(undefined \u7B49\u4E0D\u4F1A\u963B\u6B62)\uFF0C\u6765\u963B\u6B62\u9ED8\u8BA4\u64CD\u4F5C | func                     | (\u62D6\u62C9\u5143\u7D20) => {}               |\n| beforeDragMove  | \u62D6\u52A8\u4E2D\u4E8B\u4EF6\uFF0C\u53EF\u4EE5\u8FD4\u56DE false(undefined \u7B49\u4E0D\u4F1A\u963B\u6B62)\uFF0C\u6765\u963B\u6B62\u9ED8\u8BA4\u64CD\u4F5C | func                     | (\u62D6\u62C9\u5143\u7D20\uFF0C\u9F20\u6807\u6240\u5728\u5143\u7D20) => {} |\n| afterDragEnd    | \u62D6\u52A8\u5B8C\u6210\u4E8B\u4EF6\uFF0C\u8FD4\u56DE\u65B0\u7684\u6392\u5E8F\u5E8F\u53F7\uFF08key\uFF09                            | func                     | \uFF08keys\uFF09=> {}                  |\n| itemClassName   | \u6BCF\u4E2A\u5B50\u9879\u7684\u6837\u5F0F                                                   | string                   | \"\"                             |\n| direction       | \u6C34\u5E73\u6392\u5E8F\u8FD8\u662F\u5782\u76F4                                                 | \"horizontal\", \"vertical\" | \"vertical\"                     |\n#### \u540C\u4E00\u4E2A\u9875\u9762\u662F\u5426\u6709\u591A\u4E2A DragList \u7EC4\u4EF6\uFF0C\u5982\u679C\u6709\u591A\u4E2A\uFF0C\u4E8B\u4EF6\u5C31\u4F1A\u7ED1\u5B9A\u5230\u5BF9\u5E94\u7684\u7236\u7EC4\u4EF6\uFF0C\u76F8\u4E92\u9694\u79BB\uFF0C\u5982\u679C\u53EA\u6709\u4E00\u4E2A\u90A3\u4E48\u5C31\u7ED1\u5B9A\u5728 document \u4E0A\n";
+  var renderInstruction$4 = transferFile(instrction$4);
+
+  function _createSuper$j(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$j(); return function () { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+  function _isNativeReflectConstruct$j() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
   var DragListShow = /*#__PURE__*/function (_React$Component) {
     _inherits(DragListShow, _React$Component);
 
-    var _super = _createSuper$i(DragListShow);
+    var _super = _createSuper$j(DragListShow);
 
     function DragListShow() {
       var _this;
@@ -8870,19 +8950,19 @@
     return DragListShow;
   }(React__default.Component);
 
+  var code = "\nhandleOpenImage = (index, list) => {\n  previewImage({\n    currentIndex: index,\n    list,\n  });\n};\nrender() {\n  const list = [\n  \"http://cnpm.dilomen.top:9001/study.jpg\",\n  \"http://cnpm.dilomen.top:9001/meeting.jpg\",\n  \"http://cnpm.dilomen.top:9001/industry.jpg\",\n  \"http://cnpm.dilomen.top:9001/education.jpeg\",\n];\nreturn (<>\n  {list.map((item, index) => (\n    <img\n      className=\"preview-show-img\"\n      src={item}\n      key={item}\n      onClick={() => this.handleOpenImage(index, list)}\n    />\n  ))}\n  </>)\n}\n\n";
+  var errorcode = "\nhandleOpenImage = (index, list) => {\n  previewImage({\n    currentIndex: index,\n    list,\n    defaultError: <p style={{color: \"#fff\"}}>\u52A0\u8F7D\u5931\u8D25</p>\n  });\n};\n";
   var instrction$5 = "\n# previewImage\n\n| \u5C5E\u6027         | \u8BF4\u660E                   | \u7C7B\u578B   | \u9ED8\u8BA4\u503C   |\n| ------------ | ---------------------- | ------ | -------- |\n| currentIndex | \u5F53\u524D\u5C55\u793A\u7684\u56FE\u7247         | number | 0        |\n| list         | \u9700\u8981\u5C55\u793A\u7684\u56FE\u7247\u5217\u8868     | Arrry  | []       |\n| defaultError | \u56FE\u7247\u52A0\u8F7D\u5931\u8D25\u7684\u6837\u5F0F\u663E\u793A | node   | \u9ED8\u8BA4\u6837\u5F0F |\n";
   var renderInstruction$5 = transferFile(instrction$5);
 
-  function _createSuper$j(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$j(); return function () { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+  function _createSuper$k(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$k(); return function () { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-  function _isNativeReflectConstruct$j() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-  var code = "\nhandleOpenImage = (index, list) => {\n  previewImage({\n    currentIndex: index,\n    list,\n  });\n};\nrender() {\n  const list = [\n  \"http://cnpm.dilomen.top:9001/study.jpg\",\n  \"http://cnpm.dilomen.top:9001/meeting.jpg\",\n  \"http://cnpm.dilomen.top:9001/industry.jpg\",\n  \"http://cnpm.dilomen.top:9001/education.jpeg\",\n];\nreturn (<>\n  {list.map((item, index) => (\n    <img\n      className=\"preview-show-img\"\n      src={item}\n      key={item}\n      onClick={() => this.handleOpenImage(index, list)}\n    />\n  ))}\n  </>)\n}\n\n";
-  var errorcode = "\nhandleOpenImage = (index, list) => {\n  previewImage({\n    currentIndex: index,\n    list,\n    defaultError: <p style={{color: \"#fff\"}}>\u52A0\u8F7D\u5931\u8D25</p>\n  });\n};\n";
+  function _isNativeReflectConstruct$k() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
   var previewImageShow = /*#__PURE__*/function (_React$Component) {
     _inherits(previewImageShow, _React$Component);
 
-    var _super = _createSuper$j(previewImageShow);
+    var _super = _createSuper$k(previewImageShow);
 
     function previewImageShow() {
       var _this;
@@ -8960,20 +9040,20 @@
     return previewImageShow;
   }(React__default.Component);
 
+  var eventCode$1 = "\n  handleChange = (e) => {\n    const {value, checked} = e.target\n    console.log(value, checked);\n  };\n  <Checkbox onChange={this.handleChange} value=\"aa\">\u7537</Checkbox>\n  \n  <Checkbox disabled>\u7981\u7528</Checkbox>\n  \n  <Checkbox disabled checked>\u9009\u4E2D\u7981\u7528</Checkbox>\n  ";
+  var GroupCode = "\n  this.state = {\n    defaultValue: [\"a\"],\n  };\n  handleGroupChnage = (value) => {\n    this.setState({\n      defaultValue: value,\n    });\n  };\n  render () {\n    return (\n      <CheckboxGroup\n        options={[\"a\", \"b\", \"c\"]}\n        onChange={this.handleGroupChnage}\n        value={defaultValue}\n      ></CheckboxGroup>\n    )\n  }\n  ";
+  var GroupCode2 = "\n  this.state = {\n    defaultValue: [\"1\"],\n  };\n  handleGroupChange2 = (value) => {\n    this.setState({\n      defaultValue2: value,\n    });\n  }\n  render() {\n    return (\n      <CheckboxGroup onChange={this.handleGroupChange2} value={defaultValue2}>\n        <Checkbox value=\"1\">1</Checkbox>\n        <Checkbox value=\"2\">2</Checkbox>\n        <Checkbox value=\"3\">3</Checkbox>\n      </CheckboxGroup>\n    )\n  }\n  ";
   var instrction$6 = "\n  # Checkbox\n\n| \u5C5E\u6027           | \u8BF4\u660E         | \u7C7B\u578B    | \u9ED8\u8BA4\u503C |\n| -------------- | ------------ | ------- | ------ |\n| defaultChecked | \u662F\u5426\u9ED8\u8BA4\u9009\u4E2D | boolean | false  |\n| checked        | \u662F\u5426\u9009\u4E2D     | boolean | false  |\n| disabled       | \u662F\u5426\u7981\u7528     | boolean | false  |\n| onChange       | \u53D8\u5316\u65F6\u56DE\u8C03   | func    | -      |\n\n# CheckboxGroup\n\n| \u5C5E\u6027     | \u8BF4\u660E                                                                                | \u7C7B\u578B     | \u9ED8\u8BA4\u503C |\n| -------- | ----------------------------------------------------------------------------------- | -------- | ------ |\n| value    | \u9009\u4E2D\u7684\u9879                                                                            | string[] | []     |\n| options  | \u6307\u5B9A\u53EF\u9009\u9879\uFF0C['a', 'b', 'c'] \u6216 [{label: 'a', value: '1'}, {label: 'b', value: '2'}] | array    | []     |\n| disabled | \u662F\u5426\u7981\u7528\u5305\u88F9\u4E0B\u6240\u6709\u7684\u53EF\u9009\u9879                                                          | boolean  | false  |\n| onChange | \u53D8\u5316\u65F6\u56DE\u8C03                                                                          | func     | -      |\n\n  ";
   var renderInstruction$6 = transferFile(instrction$6);
 
-  function _createSuper$k(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$k(); return function () { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+  function _createSuper$l(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$l(); return function () { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-  function _isNativeReflectConstruct$k() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-  var eventCode$1 = "\nhandleChange = (e) => {\n  const {value, checked} = e.target\n  console.log(value, checked);\n};\n<Checkbox onChange={this.handleChange} value=\"aa\">\u7537</Checkbox>\n\n<Checkbox disabled>\u7981\u7528</Checkbox>\n\n<Checkbox disabled checked>\u9009\u4E2D\u7981\u7528</Checkbox>\n";
-  var GroupCode = "\nthis.state = {\n  defaultValue: [\"a\"],\n};\nhandleGroupChnage = (value) => {\n  this.setState({\n    defaultValue: value,\n  });\n};\nrender () {\n  return (\n    <CheckboxGroup\n      options={[\"a\", \"b\", \"c\"]}\n      onChange={this.handleGroupChnage}\n      value={defaultValue}\n    ></CheckboxGroup>\n  )\n}\n";
-  var GroupCode2 = "\nthis.state = {\n  defaultValue: [\"1\"],\n};\nhandleGroupChange2 = (value) => {\n  this.setState({\n    defaultValue2: value,\n  });\n}\nrender() {\n  return (\n    <CheckboxGroup onChange={this.handleGroupChange2} value={defaultValue2}>\n      <Checkbox value=\"1\">1</Checkbox>\n      <Checkbox value=\"2\">2</Checkbox>\n      <Checkbox value=\"3\">3</Checkbox>\n    </CheckboxGroup>\n  )\n}\n";
+  function _isNativeReflectConstruct$l() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
   var CheckboxShow = /*#__PURE__*/function (_React$Component) {
     _inherits(CheckboxShow, _React$Component);
 
-    var _super = _createSuper$k(CheckboxShow);
+    var _super = _createSuper$l(CheckboxShow);
 
     function CheckboxShow(props) {
       var _this;
@@ -9057,6 +9137,90 @@
     return CheckboxShow;
   }(React__default.Component);
 
+  var instrction$7 = '';
+  var renderInstruction$7 = transferFile(instrction$7);
+
+  function _createSuper$m(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$m(); return function () { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+  function _isNativeReflectConstruct$m() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+  var AnimateShow = /*#__PURE__*/function (_React$Component) {
+    _inherits(AnimateShow, _React$Component);
+
+    var _super = _createSuper$m(AnimateShow);
+
+    function AnimateShow(props) {
+      var _this;
+
+      _classCallCheck(this, AnimateShow);
+
+      _this = _super.call(this, props);
+
+      _defineProperty(_assertThisInitialized(_this), "handleFadeClick", function () {
+        _this.setState({
+          fadeStatus: !_this.state.fadeStatus
+        });
+      });
+
+      _defineProperty(_assertThisInitialized(_this), "handleSlideClick", function () {
+        _this.setState({
+          slideStatus: !_this.state.slideStatus
+        });
+      });
+
+      _this.state = {
+        fadeStatus: true,
+        slideStatus: true
+      };
+      return _this;
+    }
+
+    _createClass(AnimateShow, [{
+      key: "render",
+      value: function render() {
+        var _this$state = this.state,
+            fadeStatus = _this$state.fadeStatus,
+            slideStatus = _this$state.slideStatus;
+        return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement(CodePreview, null, /*#__PURE__*/React__default.createElement(Animate, {
+          animateName: "fade",
+          enter: fadeStatus
+        }, /*#__PURE__*/React__default.createElement("div", {
+          style: {
+            background: "red",
+            width: "200px",
+            height: "200px"
+          }
+        }), /*#__PURE__*/React__default.createElement("div", {
+          style: {
+            background: "red",
+            width: "200px",
+            height: "200px"
+          }
+        })), /*#__PURE__*/React__default.createElement(Button, {
+          onClick: this.handleFadeClick
+        }, fadeStatus ? "淡出" : "淡入")), /*#__PURE__*/React__default.createElement(CodePreview, null, /*#__PURE__*/React__default.createElement(Animate, {
+          animateName: "slide",
+          enter: slideStatus
+        }, /*#__PURE__*/React__default.createElement("div", {
+          style: {
+            background: "green",
+            width: "200px",
+            height: "200px"
+          }
+        })), /*#__PURE__*/React__default.createElement(Button, {
+          onClick: this.handleSlideClick
+        }, slideStatus ? "移出" : "移入")), /*#__PURE__*/React__default.createElement("div", {
+          className: "instruction",
+          dangerouslySetInnerHTML: {
+            __html: renderInstruction$7
+          }
+        }));
+      }
+    }]);
+
+    return AnimateShow;
+  }(React__default.Component);
+
   var routers = [{
     name: "开始使用",
     path: "/start",
@@ -9086,6 +9250,10 @@
     name: "Checkbox",
     path: "/checkbox",
     component: CheckboxShow
+  }, {
+    name: "Animate",
+    path: "/animate",
+    component: AnimateShow
   }];
 
   var App = function App() {
