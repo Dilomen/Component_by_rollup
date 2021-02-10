@@ -1,7 +1,7 @@
 /node_modules
 /noNeed
-/build
-/static
+# /build
+# /static
 
 .DS_Store
 npm-debug.log*
