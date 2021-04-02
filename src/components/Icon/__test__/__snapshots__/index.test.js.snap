@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component could be rendered snapshots without conflict render Snapshots 1`] = `
+<i
+  className="iconfont icon-search "
+/>
+`;

@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component could be rendered snapshots without conflict render Snapshots 1`] = `
+<button
+  className="serein-btn serein-btn-default serein-btn-large"
+  type="button"
+>
+  Basic
+</button>
+`;
+
+exports[`component could be rendered snapshots without conflict render Snapshots 2`] = `
+<button
+  className="serein-btn serein-btn-default serein-btn-large"
+  type="button"
+>
+  <i
+    className="serein-btn-icon"
+  >
+    <p>
+      2
+    </p>
+  </i>
+  Icon Button
+</button>
+`;
+
+exports[`component could be rendered snapshots without conflict render Snapshots 3`] = `
+<button
+  className="serein-btn serein-btn-default serein-btn-large new-class"
+  type="button"
+>
+  Icon Button
+</button>
+`;
+
+exports[`render Snapshots asdas 1`] = `
+<button
+  className="serein-btn serein-btn-default serein-btn-large"
+  type="button"
+>
+  Basic
+</button>
+`;
+
+exports[`render Snapshots asdas 2`] = `
+<button
+  className="serein-btn serein-btn-default serein-btn-large"
+  type="button"
+>
+  <i
+    className="serein-btn-icon"
+  >
+    <p>
+      2
+    </p>
+  </i>
+  Icon Button
+</button>
+`;
+
+exports[`render Snapshots asdas 3`] = `
+<button
+  className="serein-btn serein-btn-default serein-btn-large new-class"
+  type="button"
+>
+  Icon Button
+</button>
+`;

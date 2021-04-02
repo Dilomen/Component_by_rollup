@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component could be rendered snapshots without conflict render Snapshots 1`] = `
+<label
+  className="serein-checkbox-wrap "
+>
+  <input
+    checked={false}
+    disabled={false}
+    onChange={[Function]}
+    type="checkbox"
+  />
+  <span />
+</label>
+`;

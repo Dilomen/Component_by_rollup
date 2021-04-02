@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.scss";
 import Classnames from "classnames";
-import { ConfigConsumer } from "../configProvider/index.jsx";
+import { ConfigConsumer } from "../configProvider/index.js";
 import Icon from "../Icon/index";
 import { string, bool, func, node, oneOf } from "prop-types";
 class Button extends React.Component {

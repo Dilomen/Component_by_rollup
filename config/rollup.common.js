@@ -23,7 +23,8 @@ const commonPlugin = [
   alias({
       entries: [
         { find: 'cps', replacement: path.resolve(__dirname, "../src/index.js") },
-        { find: 'utils', replacement: path.resolve(__dirname, "../src/utils/index.js") }
+        { find: 'utils', replacement: path.resolve(__dirname, "../src/utils/index.js") },
+        { find: '@test', replacement: path.resolve(__dirname, "../tests/shared/index.ts") },
       ]
   }),
   resolve({

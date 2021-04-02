@@ -1,6 +1,7 @@
 /node_modules
 /noNeed
-# /build
+/coverage
+/es
 # /static
 
 .DS_Store

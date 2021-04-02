@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./index.scss";
 import { transferFile } from "utils";
 import classNames from "classnames";
-import { ConfigConsumer } from "../configProvider/index.jsx";
+import { ConfigConsumer } from "../configProvider/index";
 import Icon from "../Icon/index.js";
 class CodePreview extends Component {
   constructor(props) {
