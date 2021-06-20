@@ -1,0 +1,6 @@
+node_modules
+static
+config
+coverage
+tests
+createFile.js
