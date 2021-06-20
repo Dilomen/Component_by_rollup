@@ -1,22 +1,25 @@
-import React from "react";
-import { DragList, CodePreview } from "cps";
-import renderInstruction, { eventCode, verticalCode, horCode } from "./instruction";
-import "./index.scss";
+import React from 'react';
+import { DragList, CodePreview } from 'cps';
+import renderInstruction, { eventCode, verticalCode, horCode } from './instruction';
+import './index.scss';
 
 class DragListShow extends React.Component {
   handleDragEnd = (keys) => {
     console.log(keys);
   };
+
   handleDragMove = (node, pointNode) => {
     console.log(node, pointNode);
     // if (...)  return false;
   };
+
   handleDragStart = (currentNode) => {
     console.log(currentNode);
     // if (...)  return false;
   };
-  render() {
-    const arr = ["任务一", "任务二", "任务三", "任务四", "任务五"];
+
+  render () {
+    const arr = ['任务一', '任务二', '任务三', '任务四', '任务五'];
     return (
       <>
         <CodePreview title="垂直排序" code={verticalCode}>
@@ -42,7 +45,7 @@ class DragListShow extends React.Component {
             </DragList>
           </div>
         </CodePreview>
-        
+
         <CodePreview title="事件" code={eventCode}>
           <div className="serein-drag-list">
             <DragList
@@ -61,7 +64,7 @@ class DragListShow extends React.Component {
         <div
           className="instruction"
           dangerouslySetInnerHTML={{ __html: renderInstruction }}
-        ></div>
+        />
       </>
     );
   }

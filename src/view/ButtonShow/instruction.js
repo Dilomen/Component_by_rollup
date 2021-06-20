@@ -1,4 +1,4 @@
-import { transferFile } from "utils";
+import { transferFile } from 'utils';
 
 export const typeCode = `jsx
     <Button type='primary'>确定</Button>
@@ -30,7 +30,7 @@ export const blockCode = `jsx
     <Button type="primary" block>确定</Button>
     <Button block>默认</Button>
     <Button type="danger" block>danger</Button>
-`
+`;
 
 const instrction = `
 # Button

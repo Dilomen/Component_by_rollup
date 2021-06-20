@@ -12,11 +12,13 @@
   border-right: 1px solid #f0f0f0;
   padding-top: 24px;
   overflow: scroll;
+
   li {
     list-style: none;
     height: 40px;
     text-align: left;
     padding-left: 50px;
+
     a {
       text-decoration: none;
       color: rgba(0, 0, 0, 0.85);
@@ -42,33 +44,41 @@
   align-items: center;
   justify-content: center;
   padding-bottom: 100px;
+
   li {
     list-style: none;
     line-height: 40px;
     font-size: 20px;
     color: rgb(218, 218, 218);
+
     a {
       color: rgb(218, 218, 218);
     }
   }
 }
+
 .instruction {
   table {
     border-collapse: collapse;
     width: 100%;
     text-align: left;
+
     thead {
       background: rgb(206, 206, 206);
+
       tr {
         height: 40px;
+
         th {
           padding-left: 8px;
         }
       }
     }
+
     tbody {
       tr {
         height: 35px;
+
         td {
           padding-left: 8px;
           border-bottom: 1px solid #f0f0f0;
@@ -81,15 +91,14 @@
 
 code {
   display: block;
-    overflow-x: auto;
+  overflow-x: auto;
   background: rgba(206, 206, 206, 0.5) !important;
   border-radius: 8px;
   padding: 10px !important;
   color: rgba(0, 0, 0, 0.65) !important;
   font-size: 16px !important;
   line-height: 1.5 !important;
-  font-family: "PingFang SC", "Microsoft Yahei", Helvetica, Arial, Helvetica,
-    sans-serif !important;
+  font-family: "PingFang SC", "Microsoft Yahei", Arial, Helvetica, sans-serif !important;
 }
 
 .hljs-attribute,

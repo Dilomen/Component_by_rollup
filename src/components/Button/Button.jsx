@@ -1,14 +1,18 @@
-import React from "react";
-import "./index.scss";
-import Classnames from "classnames";
-import { ConfigConsumer } from "../configProvider/index.js";
-import Icon from "../Icon/index";
-import { string, bool, func, node, oneOf } from "prop-types";
+import React from 'react';
+import './index.scss';
+import Classnames from 'classnames';
+import {
+  string, bool, func, node, oneOf,
+} from 'prop-types';
+import { ConfigConsumer } from '../configProvider/index';
+import Icon from '../Icon/index';
+
 class Button extends React.Component {
   constructor(props) {
     super(props);
     this.btnRef = React.createRef();
   }
+
   renderButton = ({ getPrefixCls }) => {
     let iconNode = null;
     const {
@@ -23,9 +27,9 @@ class Button extends React.Component {
       htmlType,
       href,
       target,
-      style
+      // style,
     } = this.props;
-    const prefixCls = getPrefixCls("btn");
+    const prefixCls = getPrefixCls('btn');
     const classes = Classnames(
       [`${prefixCls}`],
       {
@@ -34,11 +38,11 @@ class Button extends React.Component {
         [`${prefixCls}-${type}-ghost`]: ghost,
         [`${prefixCls}-block`]: block,
       },
-      className
+      className,
     );
 
     if (icon) {
-      iconNode = <Icon icon={icon} className={`${prefixCls}-icon`}></Icon>;
+      iconNode = <Icon icon={icon} className={`${prefixCls}-icon`} />;
     }
 
     if (href) {
@@ -58,6 +62,7 @@ class Button extends React.Component {
 
     return (
       <button
+        // eslint-disable-next-line react/button-has-type
         type={htmlType}
         ref={this.btnRef}
         onClick={onClick}
@@ -69,7 +74,7 @@ class Button extends React.Component {
     );
   };
 
-  render() {
+  render () {
     return <ConfigConsumer>{this.renderButton}</ConfigConsumer>;
   }
 }
@@ -77,22 +82,23 @@ class Button extends React.Component {
 Button.defaultProps = {
   ghost: false,
   block: false,
-  htmlType: "button",
-  children: "btn",
-  size: "large",
-  type: "default",
-  className: "",
-  icon: "",
-  href: "",
-  target: ""
+  htmlType: 'button',
+  children: 'btn',
+  size: 'large',
+  type: 'default',
+  className: '',
+  icon: '',
+  href: '',
+  target: '',
+  onClick: () => {},
 };
 Button.propTypes = {
   ghost: bool,
   block: bool,
-  htmlType: oneOf(["submit", "button", "reset"]),
+  htmlType: oneOf(['submit', 'button', 'reset']),
   children: node,
-  size: oneOf(["small", "middle", "large"]),
-  type: oneOf(["default", "primary", "link", "danger"]),
+  size: oneOf(['small', 'middle', 'large']),
+  type: oneOf(['default', 'primary', 'link', 'danger']),
   href: string,
   target: string,
   onClick: func,

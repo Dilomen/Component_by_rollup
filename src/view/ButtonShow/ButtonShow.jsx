@@ -1,10 +1,18 @@
-import React from "react";
-import { Button, Icon, CodePreview, Space } from "cps";
-import renderInstruction, { typeCode, sizeCode, ghostCode, blockCode } from "./instruction";
+import React from 'react';
+import {
+  Button, Icon, CodePreview, Space,
+} from 'cps';
+import renderInstruction, {
+  typeCode, sizeCode, ghostCode, blockCode,
+} from './instruction';
 
 class Form extends React.Component {
-  state = {};
-  render() {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render () {
     return (
       <>
         <CodePreview title="类型" code={typeCode}>
@@ -15,7 +23,7 @@ class Form extends React.Component {
             <Button type="link" href="http://www.baidu.com">
               Link
             </Button>
-            <Button icon={<Icon icon={"search"}></Icon>}></Button>
+            <Button icon={<Icon icon="search" />} />
           </Space>
         </CodePreview>
 
@@ -59,7 +67,7 @@ class Form extends React.Component {
         <div
           className="instruction"
           dangerouslySetInnerHTML={{ __html: renderInstruction }}
-        ></div>
+        />
       </>
     );
   }

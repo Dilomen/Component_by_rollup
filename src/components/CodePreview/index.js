@@ -1,2 +1,3 @@
-import CodePreview from "./CodePreview";
+import CodePreview from './CodePreview';
+
 export default CodePreview;

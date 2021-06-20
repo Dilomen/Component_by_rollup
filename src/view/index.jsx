@@ -1,27 +1,29 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Switch, Route, HashRouter, Redirect, Link } from "react-router-dom";
-import "./index.scss";
-import { ConfigProvider } from "cps";
-import Start from "./Start";
-import Button from "./ButtonShow";
-import Icon from "./IconShow";
-import Modal from "./ModalShow";
-import Notification from "./NotificationShow";
-import DragList from "./DragListShow";
-import previewImage from "./previewImageShow";
-import Checkbox from "./CheckboxShow";
-import Animate from "./AnimateShow"
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {
+  Switch, Route, HashRouter, Redirect, Link,
+} from 'react-router-dom';
+import './index.scss';
+import { ConfigProvider } from 'cps';
+import Start from './Start';
+import Button from './ButtonShow';
+import Icon from './IconShow';
+import Modal from './ModalShow';
+import DragList from './DragListShow';
+import previewImage from './previewImageShow';
+import Checkbox from './CheckboxShow';
+import Animate from './AnimateShow';
+
 const routers = [
-  { name: "开始使用", path: "/start", component: Start },
-  { name: "Button", path: "/button", component: Button },
-  { name: "Icon", path: "/icon", component: Icon },
-  { name: "Modal", path: "/modal", component: Modal },
+  { name: '开始使用', path: '/start', component: Start },
+  { name: 'Button', path: '/button', component: Button },
+  { name: 'Icon', path: '/icon', component: Icon },
+  { name: 'Modal', path: '/modal', component: Modal },
   // {name: "Notification", path: "/notification", component: Notification},
-  { name: "DragList", path: "/dragList", component: DragList },
-  { name: "previewImage", path: "/previewImage", component: previewImage },
-  { name: "Checkbox", path: "/checkbox", component: Checkbox },
-  { name: "Animate", path: "/animate", component: Animate },
+  { name: 'DragList', path: '/dragList', component: DragList },
+  { name: 'previewImage', path: '/previewImage', component: previewImage },
+  { name: 'Checkbox', path: '/checkbox', component: Checkbox },
+  { name: 'Animate', path: '/animate', component: Animate },
 ];
 
 const App = () => (
@@ -44,9 +46,9 @@ const App = () => (
                 key={route.path}
                 path={route.path}
                 component={route.component}
-              ></Route>
+              />
             ))}
-            <Redirect to="/start"></Redirect>
+            <Redirect to="/start" />
           </Switch>
         </ConfigProvider>
         <div className="serein-footer">
@@ -75,4 +77,4 @@ const App = () => (
   </HashRouter>
 );
 
-ReactDOM.render(<App></App>, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById('root'));

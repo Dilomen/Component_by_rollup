@@ -1,9 +1,9 @@
-import React from "react";
-import "./index.scss";
-import { ConfigConsumer } from "cps";
-import Classnames from "classnames";
-import { bool, oneOf } from "prop-types";
-import { createRandomStr } from "dark-utils";
+import React from 'react';
+import './index.scss';
+import { ConfigConsumer } from 'cps';
+import Classnames from 'classnames';
+import { bool, oneOf } from 'prop-types';
+// import { createRandomStr } from 'dark-utils';
 
 // function setChildKey(children) {
 //   if (React.isValidElement(children)) {
@@ -32,19 +32,22 @@ class Animate extends React.Component {
     // };
     this.childrenRefs = {};
   }
+
   renderChild = ({ getPrefixCls }) => {
     // const { stateChildren } = this.state;
-    const { animateName, enter = true } = this.props;
-    const prefixCls = getPrefixCls("animate");
+    const { animateName, enter = true, children } = this.props;
+    const prefixCls = getPrefixCls('animate');
     const classes = Classnames({
       [`${prefixCls}-${animateName}-enter`]: enter,
       [`${prefixCls}-${animateName}-leave`]: !enter,
     });
-    return <div
+    return (
+      <div
         className={classes}
       >
-        {this.props.children}
+        {children}
       </div>
+    );
     // stateChildren.map((child) => (
     //   <div
     //     key={child.key}
@@ -56,18 +59,21 @@ class Animate extends React.Component {
     // ));
   };
 
-  render() {
+  render () {
     return <ConfigConsumer>{this.renderChild}</ConfigConsumer>;
   }
 }
 
 Animate.defaultProps = {
   enter: true,
+  animateName: 'fade',
+  children: [],
 };
 
 Animate.propTypes = {
   enter: bool,
-  animateName: oneOf(["fade", "toggle", "slide"]),
+  animateName: oneOf(['fade', 'toggle', 'slide']),
+  children: React.Children,
 };
 
 export default Animate;

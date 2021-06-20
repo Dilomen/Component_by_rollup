@@ -1,2 +1,3 @@
-import IconShow from "./IconShow.jsx";
+import IconShow from './IconShow';
+
 export default IconShow;

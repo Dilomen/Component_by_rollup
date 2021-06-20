@@ -1,7 +1,9 @@
-import React from "react";
-import { previewImage, CodePreview, Space, Icon } from "cps";
-import renderInstruction, { code, errorcode } from "./instruction";
-import "./index.scss";
+import React from 'react';
+import {
+  previewImage, CodePreview, Space,
+} from 'cps';
+import renderInstruction, { code, errorcode } from './instruction';
+import './index.scss';
 
 class previewImageShow extends React.Component {
   handleOpenImage = (index, list) => {
@@ -10,25 +12,27 @@ class previewImageShow extends React.Component {
       list,
     });
   };
+
   handleErrorImage = (index, list) => {
     previewImage({
       currentIndex: index,
       list,
-      defaultError: <p style={{color: "#fff"}}>加载失败</p>
+      defaultError: <p style={{ color: '#fff' }}>加载失败</p>,
     });
   };
-  render() {
+
+  render () {
     const list = [
-      "http://cnpm.dilomen.top:9001/study.jpg",
-      "http://cnpm.dilomen.top:9001/meeting.jpg",
-      "http://cnpm.dilomen.top:9001/industry.jpg",
-      "http://cnpm.dilomen.top:9001/education.jpeg",
+      'http://cnpm.dilomen.top:9001/study.jpg',
+      'http://cnpm.dilomen.top:9001/meeting.jpg',
+      'http://cnpm.dilomen.top:9001/industry.jpg',
+      'http://cnpm.dilomen.top:9001/education.jpeg',
     ];
     const errorList = [
-      "http://cnpm.dilomen.top:9001/study.jpg",
-      "http://cnpm.dilomen.top:9001/meting.jpg",
-      "http://cnpm.dilomen.top:9001/industry.jpg",
-      "http://cnpm.dilomen.top:9001/education.jpeg",
+      'http://cnpm.dilomen.top:9001/study.jpg',
+      'http://cnpm.dilomen.top:9001/meting.jpg',
+      'http://cnpm.dilomen.top:9001/industry.jpg',
+      'http://cnpm.dilomen.top:9001/education.jpeg',
     ];
     return (
       <>
@@ -39,6 +43,7 @@ class previewImageShow extends React.Component {
                 className="preview-show-img"
                 src={item}
                 key={item}
+                alt=""
                 onClick={() => this.handleOpenImage(index, list)}
               />
             ))}
@@ -51,6 +56,7 @@ class previewImageShow extends React.Component {
                 className="preview-show-img"
                 src={item}
                 key={item}
+                alt=""
                 onClick={() => this.handleErrorImage(index, errorList)}
               />
             ))}
@@ -59,7 +65,7 @@ class previewImageShow extends React.Component {
         <div
           className="instruction"
           dangerouslySetInnerHTML={{ __html: renderInstruction }}
-        ></div>
+        />
       </>
     );
   }

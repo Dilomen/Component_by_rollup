@@ -1,11 +1,11 @@
-const fs = require("fs");
-const exec = require("child_process").exec;
+const fs = require('fs');
+const { exec } = require('child_process');
 // exec('mkdir ')
 
-process.stdin.setEncoding("utf8");
-process.stdout.write("请输入文件名称？");
-process.stdin.on("data", async (input) => {
-  if (typeof input === "string") {
+process.stdin.setEncoding('utf8');
+process.stdout.write('请输入文件名称？');
+process.stdin.on('data', async (input) => {
+  if (typeof input === 'string') {
     input = input.trim();
     const componentPath = `src/components/${input}`;
     const viewPath = `src/view/${input}Show`;
@@ -25,19 +25,19 @@ class ${input} extends React.Component {
 }
     
 export default ${input};`,
-        "utf-8"
+        'utf-8',
       );
       fs.writeFileSync(
-        getRePath(componentPath, "index.js"),
+        getRePath(componentPath, 'index.js'),
         `import ${input} from './${input}';\nexport default ${input};`,
-        "utf-8"
+        'utf-8',
       );
       fs.writeFileSync(
-        getRePath(componentPath, "index.scss"),
-        `@import "../../common/style/variable.scss";`,
-        "utf-8"
+        getRePath(componentPath, 'index.scss'),
+        '@import "../../common/style/variable.scss";',
+        'utf-8',
       );
-      fs.writeFileSync(getRePath(componentPath, "index.md"), "");
+      fs.writeFileSync(getRePath(componentPath, 'index.md'), '');
       // view
       fs.writeFileSync(
         getRePath(viewPath, `${input}Show.jsx`),
@@ -57,16 +57,16 @@ class ${input}Show extends React.Component {
 }
     
 export default ${input}Show;`,
-        "utf-8"
+        'utf-8',
       );
       fs.writeFileSync(
-        getRePath(viewPath, "index.js"),
+        getRePath(viewPath, 'index.js'),
         `import ${input}Show from './${input}Show';\nexport default ${input}Show;`,
-        "utf-8"
+        'utf-8',
       );
-      fs.writeFileSync(getRePath(viewPath, "index.scss"), "");
+      fs.writeFileSync(getRePath(viewPath, 'index.scss'), '');
       fs.writeFileSync(
-        getRePath(viewPath, "instruction.js"),
+        getRePath(viewPath, 'instruction.js'),
         `
   import { transferFile } from "utils";
 
@@ -74,7 +74,7 @@ export default ${input}Show;`,
   const renderInstruction = transferFile(instrction);
 
   export default renderInstruction;
-`
+`,
       );
     } catch (err) {
       console.log(err);
@@ -84,20 +84,18 @@ export default ${input}Show;`,
   }
 });
 
-function execute(cmd) {
-  return new Promise((resolve, reject) =>
-    exec(cmd, function(err, stdout, stderr) {
-      if (err) {
-        console.error(err);
-        reject(err);
-      }
-      console.log(stdout);
-      console.log(stderr);
-      resolve();
-    })
-  );
+function execute (cmd) {
+  return new Promise((resolve, reject) => exec(cmd, (err, stdout, stderr) => {
+    if (err) {
+      console.error(err);
+      reject(err);
+    }
+    console.log(stdout);
+    console.log(stderr);
+    resolve();
+  }));
 }
 
-function getRePath(rootPath, path) {
+function getRePath (rootPath, path) {
   return `./${rootPath}/${path}`;
 }

@@ -1,14 +1,16 @@
-import React from "react";
-import { Checkbox, CodePreview, Space, CheckboxGroup } from "cps";
-import renderInstruction, { eventCode, GroupCode, GroupCode2 } from "./instruction";
-import "./index.scss";
+import React from 'react';
+import {
+  Checkbox, CodePreview, Space, CheckboxGroup,
+} from 'cps';
+import renderInstruction, { eventCode, GroupCode, GroupCode2 } from './instruction';
+import './index.scss';
 
 class CheckboxShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      defaultValue: ["a"],
-      defaultValue2: ['1', '2']
+      defaultValue: ['a'],
+      defaultValue2: ['1', '2'],
     };
   }
 
@@ -16,6 +18,7 @@ class CheckboxShow extends React.Component {
     const { value, checked } = e.target;
     console.log(value, checked);
   };
+
   handleGroupChange = (value) => {
     this.setState({
       defaultValue: value,
@@ -27,7 +30,8 @@ class CheckboxShow extends React.Component {
       defaultValue2: value,
     });
   }
-  render() {
+
+  render () {
     const { defaultValue, defaultValue2 } = this.state;
     return (
       <>
@@ -37,7 +41,7 @@ class CheckboxShow extends React.Component {
               改变状态
             </Checkbox>
             <Checkbox disabled>禁用</Checkbox>
-            <Checkbox disabled defaultChecked={true}>
+            <Checkbox disabled defaultChecked>
               选中禁用
             </Checkbox>
           </Space>
@@ -45,12 +49,11 @@ class CheckboxShow extends React.Component {
 
         <CodePreview title="Group" code={GroupCode}>
           <CheckboxGroup
-            options={["a", "b", "c"]}
+            options={['a', 'b', 'c']}
             onChange={this.handleGroupChange}
             value={defaultValue}
-          ></CheckboxGroup>
+          />
         </CodePreview>
-
 
         <CodePreview title="自定义Group" code={GroupCode2}>
           <CheckboxGroup onChange={this.handleGroupChange2} value={defaultValue2} disabled>
@@ -63,7 +66,7 @@ class CheckboxShow extends React.Component {
         <div
           className="instruction"
           dangerouslySetInnerHTML={{ __html: renderInstruction }}
-        ></div>
+        />
       </>
     );
   }

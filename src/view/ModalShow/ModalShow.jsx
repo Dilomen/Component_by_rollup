@@ -1,7 +1,9 @@
-import React from "react";
-import { Modal, Button, CodePreview, Space } from "cps";
-import renderInstruction, { baseCode, confirmCode, customCode } from "./instruction";
-import "./index.scss";
+import React from 'react';
+import {
+  Modal, Button, CodePreview, Space,
+} from 'cps';
+import renderInstruction, { baseCode, confirmCode, customCode } from './instruction';
+import './index.scss';
 
 class ModalShow extends React.Component {
   constructor(props) {
@@ -13,22 +15,26 @@ class ModalShow extends React.Component {
   }
 
   handleConfirm = () => {
-    Modal.confirm({ title: "我是标题", content: "我是内容。。。。。。" });
-  };
-  handleConfirmError = () => {
-    Modal.error({ title: "我是标题", content: "我是error。。。。。。" });
-  };
-  handleConfirmWarn = () => {
-    Modal.warning({ title: "我是标题", content: "我是warn。。。。。。" });
-  };
-  handleConfirmSuccess = () => {
-    Modal.success({ title: "我是标题", content: "我是success。。。。。。" });
-  };
-  handleConfirmInfo = () => {
-    Modal.info({ title: "我是标题", content: "我是info。。。。。。" });
+    Modal.confirm({ title: '我是标题', content: '我是内容。。。。。。' });
   };
 
-  render() {
+  handleConfirmError = () => {
+    Modal.error({ title: '我是标题', content: '我是error。。。。。。' });
+  };
+
+  handleConfirmWarn = () => {
+    Modal.warning({ title: '我是标题', content: '我是warn。。。。。。' });
+  };
+
+  handleConfirmSuccess = () => {
+    Modal.success({ title: '我是标题', content: '我是success。。。。。。' });
+  };
+
+  handleConfirmInfo = () => {
+    Modal.info({ title: '我是标题', content: '我是info。。。。。。' });
+  };
+
+  render () {
     const { baseVisible, customVisible } = this.state;
     return (
       <>
@@ -82,7 +88,7 @@ class ModalShow extends React.Component {
         <div
           className="instruction"
           dangerouslySetInnerHTML={{ __html: renderInstruction }}
-        ></div>
+        />
       </>
     );
   }

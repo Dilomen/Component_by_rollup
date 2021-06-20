@@ -13,6 +13,27 @@
   "files": [
     "es"
   ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.css": [
+      "stylelint --fix",
+      "prettier --write",
+      "git add"
+    ],
+    "**/*.scss": [
+      "stylelint --fix --syntax scss",
+      "prettier --write",
+      "git add"
+    ],
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -47,22 +68,30 @@
     "@types/enzyme": "^3.10.8",
     "@types/jest": "^26.0.22",
     "@types/puppeteer": "^5.4.3",
+    "@typescript-eslint/eslint-plugin": "^4.27.0",
+    "@typescript-eslint/parser": "^4.27.0",
     "autoprefixer": "^9.7.3",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^26.6.3",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
-    "classnames": "^2.2.6",
     "cssnano": "^4.1.10",
     "dark-utils": "^1.0.5",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "enzyme-to-json": "^3.6.1",
+    "eslint": "^7.29.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.24.0",
+    "husky": "4.3.6",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
     "jest-puppeteer": "^4.4.0",
+    "lint-staged": "^11.0.0",
     "marked": "^1.1.0",
     "node-sass": "^4.13.0",
-    "prop-types": "^15.7.2",
+    "prettier": "^2.3.1",
     "react-svg": "^11.0.22",
     "react-test-renderer": "^17.0.2",
     "rollup": "^1.27.8",
@@ -73,6 +102,8 @@
     "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-serve": "^1.0.1",
     "rollup-plugin-typescript2": "^0.24.3",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^22.0.0",
     "ts-jest": "^26.5.4",
     "ts-node": "^9.1.1",
     "typescript": "^3.6.4"
@@ -83,6 +114,8 @@
     "@types/react-router-dom": "^5.1.5",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "classnames": "^2.3.1",
+    "prop-types": "^15.7.2"
   }
 }
